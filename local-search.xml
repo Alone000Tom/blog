@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>view_source</title>
+    <link href="/2021/09/24/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cview_source/"/>
+    <url>/2021/09/24/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cview_source/</url>
+    
+    <content type="html"><![CDATA[<h1 id="打开题目"><a href="#打开题目" class="headerlink" title="打开题目"></a>打开题目</h1><p><img src="https://i.loli.net/2021/09/24/YbC1z2FESjav5Qe.png" alt="＜(▰˘◡˘▰)"><br> 题目描述x老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用。</p><p><img src="https://i.loli.net/2021/09/24/alfXwWLxSbsOMtE.png" alt="＜(▰˘◡˘▰)"><br>打开题目发现，鼠标右键不能使用。由于题目提示查看网页源代码，使用f12查看网页源码。</p><p><img src="https://i.loli.net/2021/09/24/dcMPCrFAhOHoauE.png" alt="＜(▰˘◡˘▰)"><br>在网页源代码中发现flag！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>攻防世界</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>文件上传--.htaccess</title>
+    <link href="/2021/09/20/ctfhub%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0htaccess/"/>
+    <url>/2021/09/20/ctfhub%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0htaccess/</url>
+    
+    <content type="html"><![CDATA[<p>htaccess文件(或者”分布式配置文件”）,全称是Hypertext Access(超文本入口)。提供了针对目录改变配置的方法，即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。</p><h1 id="打开环境"><a href="#打开环境" class="headerlink" title="打开环境"></a>打开环境</h1><blockquote><p><img src="https://i.loli.net/2021/09/20/npyU6VuCPbZvIgo.png" alt="(◕ᴗ◕✿)"></p></blockquote><h1 id="创建-htaccess文件"><a href="#创建-htaccess文件" class="headerlink" title="创建.htaccess文件"></a>创建.htaccess文件</h1><blockquote><p>写入文本  SetHandler application/x-httpd-php  保存为.htaccess文件<br>上传.htaccess文件<br><img src="https://i.loli.net/2021/09/20/flLajZBqp91FGM5.png" alt="(◕ᴗ◕✿)"><br>将任意文件格式解析为php格式</p></blockquote><h1 id="上传-jpg马文件"><a href="#上传-jpg马文件" class="headerlink" title="上传.jpg马文件"></a>上传.jpg马文件</h1><blockquote><p><img src="https://i.loli.net/2021/09/20/YIUJfCTn9jckb5t.png" alt="(◕ᴗ◕✿)"></p></blockquote><h1 id="蚁剑链接"><a href="#蚁剑链接" class="headerlink" title="蚁剑链接"></a>蚁剑链接</h1><p><img src="https://i.loli.net/2021/09/20/THQLwUMeFZ17ISW.png" alt="(◕ᴗ◕✿)"></p><h1 id="连接后台"><a href="#连接后台" class="headerlink" title="连接后台"></a>连接后台</h1><p><img src="https://i.loli.net/2021/09/20/VTILiqPKyakfYZo.png" alt="(◕ᴗ◕✿)"></p><p>成功找到flag!!</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTFHUB</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Daovoice</title>
+    <link href="/2021/09/13/daovioce/"/>
+    <url>/2021/09/13/daovioce/</url>
+    
+    <content type="html"><![CDATA[<h1 id="关于DaoVoice"><a href="#关于DaoVoice" class="headerlink" title="关于DaoVoice"></a>关于DaoVoice</h1><p>DaoVoice 是一款革命性的应用运营平台，致力于帮助企业实现以用户为中心的「精益运营」体系。</p><p>融合「在线聊天」、「客服支持」、「用户画像」、「消息推送」、「行为引导」等功能为一体， 按需获取用户信息和行为，实现场景化消息推送，让通知更富有人情味。</p><p>接入只需 5 行代码，即可创建与用户实时沟通的窗口，无缝接入企业原有产品体系，拉近企业与用户的距离。</p><p>秉承「数据驱动，精益运营」的理念，让用户定义产品，让参与感驱动产品迭代。</p><p>用 DaoVoice 驱动用户运营，帮你最终实现用户转化。</p><blockquote><p>“DaoVoice 帮我们更好地运营用户。实时在线沟通，可更快解决用户问题。后台管理可帮我们建立用户画像，针对不同的用户需求进行精准运营。此外，DaoVoice 团队会快速响应我们的反馈，给予高质量服务支持。” ——Travis创始人 &amp; CEO</p></blockquote><h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><h3 id="1-主题-layout-daovioce-ejs-创建一个ejs文件。"><a href="#1-主题-layout-daovioce-ejs-创建一个ejs文件。" class="headerlink" title="1.主题\layout(daovioce.ejs)创建一个ejs文件。"></a>1.主题\layout(daovioce.ejs)创建一个ejs文件。</h3><blockquote><p>添加代码</p><blockquote><p>&lt;% if(theme.daovoice.enable &amp;&amp; theme.daovoice.appid){ %&gt;<br>  <script>(function (i, s, o, g, r, a, m) {<br>      i['DaoVoiceObject'] = r;<br>      i[r] = i[r] ||<br>        function () {<br>          (i[r].q = i[r].q || []).push(arguments);<br>        };<br>      i[r].l = 1 * new Date();<br>      a = s.createElement(o);<br>      m = s.getElementsByTagName(o)[0];<br>      a.async = 1;<br>      a.src = g;<br>      a.charset = 'utf-8';<br>      m.parentNode.insertBefore(a, m);<br>    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/<%= theme.daovoice.appid %>.js", 'daovoice');<br>    daovoice('init', {<br>      app_id: "<%= theme.daovoice.appid %>",<br>    });<br>    daovoice('update');<br>  </script><br>&lt;% } %&gt;</p></blockquote></blockquote><h3 id="2-在-主题-layout-layout-ejs添加一下代码。"><a href="#2-在-主题-layout-layout-ejs添加一下代码。" class="headerlink" title="2.在 主题\layout\layout.ejs添加一下代码。"></a>2.在 主题\layout\layout.ejs添加一下代码。</h3><blockquote><!--DaoVoice服务http://blog.daovoice.io/--><p>&lt;%- partial(‘_third-party/daovoice’) %&gt;</p></blockquote><h3 id="3-在主题配置文件-config-yml添加。"><a href="#3-在主题配置文件-config-yml添加。" class="headerlink" title="3.在主题配置文件_config.yml添加。"></a>3.在主题配置文件_config.yml添加。</h3><blockquote><p>daovoice:  # 在线客服 Daovoice 参考：<a href="http://dashboard.daovoice.io/">http://dashboard.daovoice.io</a><br>  enable: true # 是否开启在线客服聊天<br>  appid: ‘exxxxxxx’  # 自己应用ID设置</p></blockquote><h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://i.loli.net/2021/09/13/Nm32njO4sMDz9Cc.gif" alt="(✪ω✪)"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>其他</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>文件上传-%00绕过</title>
+    <link href="/2021/09/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A00x00/"/>
+    <url>/2021/09/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A00x00/</url>
+    
+    <content type="html"><![CDATA[<h1 id="打开题目"><a href="#打开题目" class="headerlink" title="打开题目"></a>打开题目</h1><blockquote><p>存在文件上传点。不能上传php,asp；只能上传png,jpg,gif文件。</p><blockquote><p><img src="https://i.loli.net/2021/09/09/azsbAjdeOgk7Sci.png" alt="ヾ(●´∀｀●) "></p></blockquote></blockquote><h1 id="上传图片马"><a href="#上传图片马" class="headerlink" title="上传图片马"></a>上传图片马</h1><blockquote><p>上传图片之后，发现不知道图片位置。</p><blockquote><p><img src="https://i.loli.net/2021/09/09/LNSlKf6CqOXwFVd.png" alt="(づ｡◕ᴗᴗ◕｡)づ"></p></blockquote></blockquote><hr><blockquote><p>上传图片马代理抓包。</p><blockquote><p><img src="https://i.loli.net/2021/09/09/UzlGHhkjaFC2rt1.png" alt="(づ｡◕ᴗᴗ◕｡)づ"><br>发现在第一行地址处upload之后无路径；加上文件名称，%00截断修改包后发送。<br><img src="https://i.loli.net/2021/09/09/Hulv7hMTnNICjps.png" alt="(づ｡◕ᴗᴗ◕｡)づ"><br>显示上传成功！</p></blockquote></blockquote><h1 id="蚁剑链接"><a href="#蚁剑链接" class="headerlink" title="蚁剑链接"></a>蚁剑链接</h1><blockquote><p>一开始复制浏览器地址加上upload/1.php（<a href="http://challenge-610973f02b095647.sandbox.ctfhub.com:10800/?road=/var/www/html/upload/1.php%EF%BC%89">http://challenge-610973f02b095647.sandbox.ctfhub.com:10800/?road=/var/www/html/upload/1.php）</a> 链接一直失败不知道问题在哪，搜索想过wp也是直接说得到地址链接，最后在一个小哥博客里发现了地址格式有误。<br>地址应该为(<a href="http://challenge-610973f02b095647.sandbox.ctfhub.com:10800/1.php%EF%BC%89">http://challenge-610973f02b095647.sandbox.ctfhub.com:10800/1.php）</a> 现在链接显示成功。</p><blockquote><p><img src="https://i.loli.net/2021/09/10/KfTsz82Oxk3hjgJ.png" alt="(づ｡◕ᴗᴗ◕｡)づ"></p></blockquote></blockquote><hr><blockquote><p>查找目标文件夹</p><blockquote><p><img src="https://i.loli.net/2021/09/09/TMO9vokscRHIrfF.png" alt="(づ｡◕ᴗᴗ◕｡)づ"><br>成功找到flag!</p></blockquote></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTFHUB</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>文件上传-双写绕过</title>
+    <link href="/2021/09/08/ctfhub%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0-%E5%8F%8C%E5%86%99%E7%BB%95%E8%BF%87/"/>
+    <url>/2021/09/08/ctfhub%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0-%E5%8F%8C%E5%86%99%E7%BB%95%E8%BF%87/</url>
+    
+    <content type="html"><![CDATA[<h1 id="打开题目"><a href="#打开题目" class="headerlink" title="打开题目"></a>打开题目</h1><blockquote><p>文件上传 上传一个php一句话。</p><blockquote><p><img src="https://i.loli.net/2021/09/08/EDpxAwdFQTL6jKc.png" alt="ヽ(ー_ー)ノ"><br>发现上传之后后缀php被过滤。</p></blockquote></blockquote><hr><blockquote><p>题目为双写绕过，写两次phpphp照样被过滤，写为pphphp过滤了中间一个php剩下字母拼成一个。</p><blockquote><p><img src="https://i.loli.net/2021/09/08/sOZGKW5pXxM6wLR.png" alt="ヽ(ー_ー)ノ"><br>上传成功，显示pass.php。<br><img src="https://i.loli.net/2021/09/08/qJNo8hOdmpU5gw9.png" alt="ヽ(ー_ー)ノ"></p></blockquote></blockquote><h1 id="工具链接"><a href="#工具链接" class="headerlink" title="工具链接"></a>工具链接</h1><blockquote><p>输入文件地址 密码链接成功。</p><blockquote><p><img src="https://i.loli.net/2021/09/08/Xknez84PcvtRUOr.png" alt="ヽ(ー_ー)ノ"><br>找到flag文件<br><img src="https://i.loli.net/2021/09/08/2fC3L7txyeWwvbH.png" alt="ヽ(ー_ー)ノ"><br>成功找到！！</p></blockquote></blockquote><blockquote><p>考察文件上传漏洞，双写绕过，重复写后缀名，自动过滤一个还剩下一个保证文件格式完整。</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTFHUB</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>X-Forwarded-For注入漏洞实战</title>
+    <link href="/2021/09/08/%E5%A2%A8%E8%80%85%20X-Forwarded-For%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%AE%9E%E6%88%98/"/>
+    <url>/2021/09/08/%E5%A2%A8%E8%80%85%20X-Forwarded-For%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%AE%9E%E6%88%98/</url>
+    
+    <content type="html"><![CDATA[<h1 id="打开地址"><a href="#打开地址" class="headerlink" title="打开地址"></a>打开地址</h1><blockquote><p>是一个登录页面</p><blockquote><p><img src="https://i.loli.net/2021/09/08/TY7k8m6onBF3DrH.png" alt="┗( ▔, ▔ )┛"></p></blockquote></blockquote><h1 id="代理抓包"><a href="#代理抓包" class="headerlink" title="代理抓包"></a>代理抓包</h1><blockquote><p>题目为X-Forwarded-For：存在注入漏洞，抓包结果没有X-Forwarded-For：<br>添加X-Forwarded-For之后，复制保存在sqlmap下txt文件。X-Forwarded-For: * (加 * 告诉sqlmap此处存在漏洞)</p><blockquote><p><img src="https://i.loli.net/2021/09/08/jWehkAbowcQPIKv.png" alt="┗( ▔, ▔ )┛"><br>保存名字为xff.txt文件之后。</p></blockquote></blockquote><h1 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h1><blockquote><p>爆数据库</p><blockquote><p>python sqlmap.py -r xff.txt –dbs –batch(默认选择yes)</p><blockquote><p><img src="https://i.loli.net/2021/09/08/oZgG9s3lX4vxyHu.png" alt="┗( ▔, ▔ )┛"><br>数据库名称为 webcalendar</p></blockquote></blockquote></blockquote><hr><blockquote><p>爆表名</p><blockquote><p>python sqlmap.py -r xff.txt -D webcalendar -tables –batch(默认选择yes)</p><blockquote><p><img src="https://i.loli.net/2021/09/08/OAzWQI3cy2qHmYd.png" alt="┗( ▔, ▔ )┛"><br>得到表名user;logins。</p></blockquote></blockquote></blockquote><hr><blockquote><p>爆字段名</p><blockquote><p>python sqlmap.py -r xff.txt -D webcalendar -T user –columns –batch</p><blockquote><p><img src="https://i.loli.net/2021/09/08/nP5dTFKapBGYc3u.png" alt="┗( ▔, ▔ )┛"><br>得到字段名id;password;username。</p></blockquote></blockquote></blockquote><h1 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h1><blockquote><p><img src="https://i.loli.net/2021/09/08/Lkgo3GRJXD7jrEV.png" alt="┗( ▔, ▔ )┛"><br>获取成功！！</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>mozhe</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>域名申请</title>
+    <link href="/2021/08/31/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/"/>
+    <url>/2021/08/31/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/</url>
+    
+    <content type="html"><![CDATA[<h1 id="阿里云申请域名"><a href="#阿里云申请域名" class="headerlink" title="阿里云申请域名"></a>阿里云申请域名</h1><p>   nosecurity.cn域名申请成功 </p>]]></content>
+    
+    
+    <categories>
+      
+      <category>其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>其他</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>攻防世界baby_web</title>
+    <link href="/2021/08/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cbaby_web/"/>
+    <url>/2021/08/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cbaby_web/</url>
+    
+    <content type="html"><![CDATA[<h1 id="读题"><a href="#读题" class="headerlink" title="读题"></a>读题</h1><blockquote><p>提示初始页面   我们一般认为初始页面为index.php</p></blockquote><p><img src="https://i.loli.net/2021/08/04/LnSdxtc7Df95ahX.png" alt="ヽ(ー_ー)ノ"></p><blockquote><p>出入index.php发现又跳转到1.php<br><img src="https://i.loli.net/2021/08/04/3Gw4EfNgIVjvd7c.png" alt="ヽ(ー_ー)ノ"></p></blockquote><blockquote><p>使用bp抓包，输入index.php看返回结果<br><img src="https://i.loli.net/2021/08/04/R4Upt3ZfNnKLu8z.png" alt="ヽ(ー_ー)ノ"></p><blockquote><p>找到一个flag字样</p></blockquote></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>攻防世界</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>攻防世界simple_js</title>
+    <link href="/2021/08/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csimple_js/"/>
+    <url>/2021/08/04/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Csimple_js/</url>
+    
+    <content type="html"><![CDATA[<h1 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h1><blockquote><p>发现提示的信息(Flag格式为 Cyberpeace{xxxxxxxxx} )<br><img src="https://i.loli.net/2021/08/04/dIKT7H619pcntR5.png" alt="─━ _ ─━✧"></p></blockquote><hr><h1 id="打开题目"><a href="#打开题目" class="headerlink" title="打开题目"></a>打开题目</h1><blockquote><p>题目提示密码一直不对 提示js 打开网页源码查看<br><img src="https://i.loli.net/2021/08/04/akCZTjpMQW5IKf3.png" alt="─━ _ ─━✧"></p><blockquote><p>发现带有类似flag样式 一串内容</p></blockquote></blockquote><h1 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h1><p><img src="https://i.loli.net/2021/08/04/Csdvjfb1UT2Dl6c.png" alt="─━ _ ─━✧"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>攻防世界</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>攻防世界command_execution</title>
+    <link href="/2021/08/03/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Ccommand-execution/"/>
+    <url>/2021/08/03/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Ccommand-execution/</url>
+    
+    <content type="html"><![CDATA[<h1 id="读题"><a href="#读题" class="headerlink" title="读题"></a>读题</h1><p>小宁写了个ping功能,但没有写waf,X老师告诉她这是非常危险的，你知道为什么吗。<br>应该是考察ping与waf相关内容<br><img src="https://i.loli.net/2021/08/04/rCn7oLjx6R4la2s.png" alt="─━ _ ─━✧"></p><h1 id="WAF简介"><a href="#WAF简介" class="headerlink" title="WAF简介"></a>WAF简介</h1><p>  Web应用防护系统（也称为：网站应用级入侵防御系统。英文：Web Application Firewall，简称：WAF）。利用国际上公认的一种说法：Web应用防火墙是通过执行一系列针对HTTP/HTTPS的安全策略来专门为Web应用提供保护的一款产品。 </p><h1 id="WAF功能"><a href="#WAF功能" class="headerlink" title="WAF功能"></a>WAF功能</h1><blockquote><p>审计设备<br>对于系统自身安全相关的下列事件产生审计记录：<br>（1）管理员登录后进行的操作行为；<br>（2） 对安全策略进行添加、修改、删除等操作行为；<br>（3） 对管理角色进行增加、删除和属性修改等操作行为；<br>（4） 对其他安全功能配置参数的设置或更新等行为。<br>访问控制设备<br>用来控制对Web应用的访问，既包括主动安全模式也包括被动安全模式。<br>架构/网络设计工具<br>当运行在反向代理模式，他们被用来分配职能，集中控制，虚拟基础结构等。<br>WEB应用加固功能<br>这些功能增强被保护Web应用的安全性，它不仅能够屏蔽WEB应用固有弱点，而且能够保护WEB应用编程错误导致的安全隐患。</p></blockquote><p>需要指出的是，并非每种被称为Web应用防火墙的设备都同时具有以上四种功能。<br>同时WEB应用防火墙还具有多面性的特点。比如从网络入侵检测的角度来看可以把WAF看成运行在HTTP层上的IDS设备;从防火墙角度来看，WAF是一种防火墙的功能模块;还有人把WAF看作“深度检测防火墙”的增强。（深度检测防火墙通常工作在的网络的第三层以及更高的层次，而Web应用防火墙则在第七层处理HTTP服务并且更好地支持它。）</p><h1 id="打开题目"><a href="#打开题目" class="headerlink" title="打开题目"></a>打开题目</h1><p>本题没有waf也就是窜改网站获取flag<br><img src="https://i.loli.net/2021/08/04/nR8C1aXjI5LTc3M.png" alt="─━ _ ─━✧"></p><blockquote><p>ping一下本地地址127.0.0.1 发现可以ping通<br><img src="https://i.loli.net/2021/08/04/8X9apbmqHfEuMiy.png" alt="─━ _ ─━✧"></p></blockquote><blockquote><p>ping通后搜索一下flag</p><blockquote><p>命令：127.0.0.1 |find / -name “*.txt”</p></blockquote></blockquote><p><img src="https://i.loli.net/2021/08/04/gWzioVcqHMIEnlK.png" alt="─━ _ ─━✧"><br>发现在home下存在flag.txt</p><blockquote><p>输出flag</p><blockquote><p>命令：127.0.0.1|cat /home/flag.txt<br>  <img src="https://i.loli.net/2021/08/04/W3knjr6squmewXN.png" alt="─━ _ ─━✧"><br>成功找到</p></blockquote></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>攻防世界</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>攻防世界weakauth</title>
+    <link href="/2021/08/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweakauth/"/>
+    <url>/2021/08/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweakauth/</url>
+    
+    <content type="html"><![CDATA[<h1 id="打开题目"><a href="#打开题目" class="headerlink" title="打开题目"></a>打开题目</h1><p>一个登录页面 随手设的密码<br><img src="https://i.loli.net/2021/08/02/bqlxIQ2sOPvtdrN.png" alt="ヽ(ー_ー)ノ"></p><h1 id="打开环境"><a href="#打开环境" class="headerlink" title="打开环境"></a>打开环境</h1><p>发现是一个登录页面 说是随便设置的密码 简单猜一下(不行再爆破)<br>试了试password  不行哈<br>试了试123456 woc成功了</p><p><img src="https://i.loli.net/2021/08/02/UuF53jLGgfRwxl4.png" alt="ヽ(ー_ー)ノ"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>攻防世界</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>攻防世界webshell</title>
+    <link href="/2021/08/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwebshell/"/>
+    <url>/2021/08/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwebshell/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote><p>小宁把一段话放在index.php里面<br><img src="https://i.loli.net/2021/08/02/F3KEqb8l7uWJXZg.png" alt="ヽ(ー_ー)ノ"></p></blockquote><h1 id="打开场景连接"><a href="#打开场景连接" class="headerlink" title="打开场景连接"></a>打开场景连接</h1><blockquote><p>提示你会使用 webshell吗 搜索了解webshell为网站后门</p><blockquote><p>并且给了一段php代码 搜索了解为php一句话  因此推断小宁在index.php中插入了一句话后门<br><img src="https://i.loli.net/2021/08/02/JqQluf6Ci5bVzG9.png" alt="_ヽ(ー_ー)ノ"></p></blockquote></blockquote><h1 id="菜刀"><a href="#菜刀" class="headerlink" title="菜刀"></a>菜刀</h1><blockquote><p>使用菜刀 输入地址 密码为shell<br><img src="https://i.loli.net/2021/08/02/5MsYGIQj1pzAgnR.png" alt="ヽ(ー_ー)ノ"><br>成功查看目录结构及其内容<br>打开flag文件 成功得到<br><img src="https://i.loli.net/2021/08/02/FTr3alevy8ogBRM.png" alt="ヽ(ー_ー)ノ"></p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>攻防世界</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>web信息泄露（php）</title>
+    <link href="/2021/07/06/php/"/>
+    <url>/2021/07/06/php/</url>
+    
+    <content type="html"><![CDATA[<h1 id="emsp-emsp-emsp-emsp-emsp-emsp-php"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-php" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; php"></a>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; php</h1><blockquote><p> 开启环境后，点击进入，查看图片，仔细搜索发现flag。</p></blockquote><p><img src="https://i.loli.net/2021/07/16/SYQ3nfVOuMzEx9i.png" alt="┗( ▔, ▔ )┛"></p><blockquote><blockquote><p> 按f12 查看网页源码 ，搜索发现flag。</p></blockquote></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTFHUB</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>web信息泄露（目录遍历）</title>
+    <link href="/2021/07/06/%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86/"/>
+    <url>/2021/07/06/%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86/</url>
+    
+    <content type="html"><![CDATA[<h1 id="emsp-emsp-emsp-emsp-emsp-emsp-emsp-目录遍历"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-emsp-目录遍历" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  目录遍历"></a>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  目录遍历</h1><p>路径遍历攻击（也称为目录遍历）旨在访问存储在Web根文件夹之外的文件和目录。通过操纵带有“点-斜线（…）”序列及其变化的文件或使用绝对文件路径来引用文件的变量，可以访问存储在文件系统上的任意文件和目录，包括应用程序源代码、配置和关键系统文件。需要注意的是，系统操作访问控制（如在微软Windows操作系统上锁定或使用文件）限制了对文件的访问权限。这种攻击也称为“点-点斜线”、“目录遍历”、“目录爬升”和“回溯”。</p><h1 id="emsp-emsp-emsp-emsp-emsp-emsp-emsp-手动操作"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-emsp-手动操作" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  手动操作"></a>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  手动操作</h1><p><img src="https://i.loli.net/2021/07/16/3fpOMCl6DgxnHWX.png" alt="┗( ▔, ▔ )┛"></p><blockquote><p>打开环境网址，查看每个文件夹，在flag.txt中发现flag.</p></blockquote><p><img src="https://i.loli.net/2021/07/16/UgCHAu5rVh3cz1k.png" alt="┗( ▔, ▔ )┛">                                                                        </p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTFHUB</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Second blog</title>
+    <link href="/2021/07/05/Second/"/>
+    <url>/2021/07/05/Second/</url>
+    
+    <content type="html"><![CDATA[<h1 id="有点晚了"><a href="#有点晚了" class="headerlink" title="有点晚了"></a>有点晚了</h1><h2 id="emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-就来想试试"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-就来想试试" class="headerlink" title="&emsp;  &emsp;  &emsp;&emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; 就来想试试"></a>&emsp;  &emsp;  &emsp;&emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; 就来想试试</h2><h2 id="emsp-emsp-emsp-emsp-emsp-居然折磨晚了"><a href="#emsp-emsp-emsp-emsp-emsp-居然折磨晚了" class="headerlink" title="&emsp;  &emsp; &emsp; &emsp; &emsp; 居然折磨晚了"></a>&emsp;  &emsp; &emsp; &emsp; &emsp; 居然折磨晚了</h2><h1 id="emsp-emsp-emsp-哈哈哈"><a href="#emsp-emsp-emsp-哈哈哈" class="headerlink" title="&emsp; &emsp; &emsp; 哈哈哈"></a>&emsp; &emsp; &emsp; 哈哈哈</h1><h1 id="emsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-有点晕了"><a href="#emsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-有点晕了" class="headerlink" title="&emsp;  &nbsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  有点晕了"></a>&emsp;  &nbsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  有点晕了</h1><h1 id="nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-看点不早了"><a href="#nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-看点不早了" class="headerlink" title="&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 看点不早了"></a>&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 看点不早了</h1><h2 id="nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-该睡了"><a href="#nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-该睡了" class="headerlink" title="&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  该睡了"></a>&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  该睡了</h2><h1 id="emsp-emsp-emsp-emsp-emsp-晚安-玛卡巴卡"><a href="#emsp-emsp-emsp-emsp-emsp-晚安-玛卡巴卡" class="headerlink" title="&emsp; &emsp; &emsp; &emsp;&emsp;  晚安 玛卡巴卡"></a>&emsp; &emsp; &emsp; &emsp;&emsp;  晚安 玛卡巴卡</h1>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>HELLO</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>First blog</title>
+    <link href="/2021/07/05/First/"/>
+    <url>/2021/07/05/First/</url>
+    
+    <content type="html"><![CDATA[<h1 id="emsp-emsp-emsp-emsp-emsp-初识"><a href="#emsp-emsp-emsp-emsp-emsp-初识" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp;  初识"></a>&emsp; &emsp; &emsp; &emsp; &emsp;  初识</h1><p> 刚开始了解hexo+github搭建个人博客，于是从网上搜索视频，按着视频教程一步一步开始下载nodejs、git等环境配置文件，hexo配置一直无法安装完成。多方向搜索了解之后，认为镜像问题，更换了淘宝镜像，还是无法安装插件。多次删除nodejs、git等从新开始尝试，从零做起，按着视频教程操作，最后还是hexo安装失败。放停了几天之后，重新开始操作，终于发现是由于电脑权限问题导致hexo无法安装成功。授予管理员权限之后，开始了博客创作。</p><h1 id="emsp-emsp-emsp-emsp-emsp-上传github"><a href="#emsp-emsp-emsp-emsp-emsp-上传github" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; 上传github"></a>&emsp; &emsp; &emsp; &emsp; &emsp; 上传github</h1><p> 本地搭建完成，生成hello word页面，本地浏览正常。开始上传github，多次尝试操作之后，终于在github库中显示了源码文件。我也心生欢喜，但是输入网站，无法打开博客页面。新的问题又接踵而至，我不断删除、重传、尝试….一次又一次的失败让我心中充满了失落，甚至打起了退堂鼓。我静下来重新搜索解决问题的线索，终于解决了问题。输入个人网址之后，显示出hello word初始界面。这无疑为我增添了动力，我干劲十足准备更新一下blog。</p><p><img src="https://i.loli.net/2021/08/04/qD4vyK5aM3RgW7C.jpg" alt="┗( ▔, ▔ )┛"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>HELLO</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
