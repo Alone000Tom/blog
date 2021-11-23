@@ -18,7 +18,7 @@
   <meta name="author" content="Alone">
   <meta name="keywords" content="">
   
-  <title>文件上传--.htaccess - Tom 的博客</title>
+  <title>攻防世界-unserialize3 - Tom 的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="文件上传--.htaccess">
+            <span class="h2" id="subtitle" title="攻防世界-unserialize3">
               
             </span>
 
@@ -178,8 +178,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-20 19:01" pubdate>
-        September 20, 2021 pm
+      <time datetime="2021-11-07 13:01" pubdate>
+        November 7, 2021 pm
       </time>
     </span>
   
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      167 字
+      543 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      8
        分钟
     </span>
   
@@ -238,22 +238,17 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">文件上传--.htaccess</h1>
+            <h1 style="display: none">攻防世界-unserialize3</h1>
             
             <div class="markdown-body">
-              <p>htaccess文件(或者”分布式配置文件”）,全称是Hypertext Access(超文本入口)。提供了针对目录改变配置的方法，即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。</p>
-<h1 id="打开环境"><a href="#打开环境" class="headerlink" title="打开环境"></a>打开环境</h1><blockquote>
-<p><img src="https://i.loli.net/2021/09/20/npyU6VuCPbZvIgo.png" srcset="/img/loading2.gif" lazyload alt="(◕ᴗ◕✿)"></p>
+              <h1 id="一-根据题目猜测这道题应该和反序列化漏洞有关"><a href="#一-根据题目猜测这道题应该和反序列化漏洞有关" class="headerlink" title="一.根据题目猜测这道题应该和反序列化漏洞有关"></a>一.根据题目猜测这道题应该和反序列化漏洞有关</h1><h2 id="1-先了解一下什么是序列化和反序列化"><a href="#1-先了解一下什么是序列化和反序列化" class="headerlink" title="1.先了解一下什么是序列化和反序列化"></a>1.先了解一下什么是序列化和反序列化</h2><p>当在php中创建了一个对象后，可以通过 serialize() 函数把这个对象转变成一个字符串，保存对象的值方便之后的传递与使用。<br>与 serialize() 相反的就是反序列化函数 unserialize() ，它可以将一个字符串转变为相对应的php对象。</p>
+<blockquote>
+<p>在序列化过程中会用到的函数：<br>    __construct()：当对象创建（new）时会自动调用。但在 unserialize() 时是不会自动调用的。（构造函数）<br>    __destruct()：当对象被销毁时会自动调用。（析构函数）<br>    __wakeup()：unserialize() 时会自动调用。<br>    __sleep() 在对象被序列化之前运行。<br>    __toString ()当一个对象被当作一个字符串使用。<br>从序列化到反序列化这几个函数的执行过程是：<br>先调用__construct()-&gt;__sleep-&gt;__wakeup()-&gt;__toString ()-&gt;__destruct()</p>
 </blockquote>
-<h1 id="创建-htaccess文件"><a href="#创建-htaccess文件" class="headerlink" title="创建.htaccess文件"></a>创建.htaccess文件</h1><blockquote>
-<p>写入文本  SetHandler application/x-httpd-php  保存为.htaccess文件<br>上传.htaccess文件<br><img src="https://i.loli.net/2021/09/20/flLajZBqp91FGM5.png" srcset="/img/loading2.gif" lazyload alt="(◕ᴗ◕✿)"><br>将任意文件格式解析为php格式</p>
-</blockquote>
-<h1 id="上传-jpg马文件"><a href="#上传-jpg马文件" class="headerlink" title="上传.jpg马文件"></a>上传.jpg马文件</h1><blockquote>
-<p><img src="https://i.loli.net/2021/09/20/YIUJfCTn9jckb5t.png" srcset="/img/loading2.gif" lazyload alt="(◕ᴗ◕✿)"></p>
-</blockquote>
-<h1 id="蚁剑链接"><a href="#蚁剑链接" class="headerlink" title="蚁剑链接"></a>蚁剑链接</h1><p><img src="https://i.loli.net/2021/09/20/THQLwUMeFZ17ISW.png" srcset="/img/loading2.gif" lazyload alt="(◕ᴗ◕✿)"></p>
-<h1 id="连接后台"><a href="#连接后台" class="headerlink" title="连接后台"></a>连接后台</h1><p><img src="https://i.loli.net/2021/09/20/VTILiqPKyakfYZo.png" srcset="/img/loading2.gif" lazyload alt="(◕ᴗ◕✿)"></p>
-<p>成功找到flag!!</p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">xctf</span></span>&#123;                      <span class="hljs-comment">//定义一个名为xctf的类</span><br><span class="hljs-keyword">public</span> <span class="hljs-variable">$flag</span> = <span class="hljs-string">&#x27;111&#x27;</span>;            <span class="hljs-comment">//定义一个公有的类属性$flag，值为111</span><br><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>&#123;      <span class="hljs-comment">//定义一个公有的类方法__wakeup()，输出bad requests后退出当前脚本</span><br><span class="hljs-keyword">exit</span>(<span class="hljs-string">&#x27;bad requests&#x27;</span>);<br>&#125;<br>&#125;<br><span class="hljs-variable">$peak</span> = <span class="hljs-keyword">new</span> xctf();           <span class="hljs-comment">//使用new运算符来实例化该类（xctf）的对象为peak</span><br><span class="hljs-keyword">echo</span>(serialize(<span class="hljs-variable">$peak</span>));       <span class="hljs-comment">//输出被序列化的对象（peak）</span><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+<p><img src="https://pic.imgdb.cn/item/618644062ab3f51d91e08c1d.jpg" srcset="/img/loading2.gif" lazyload><br>因此，我们要反序列化xctf类的同时还要绕过__wakeup方法的执行（如果不绕过__wakeup()方法，那么将会输出bad requests并退出脚本），__wakeup()函数漏洞原理：当序列化字符串表示对象属性个数的值大于真实个数的属性时就会跳过__wakeup的执行。因此，需要修改序列化字符串中的属性个数：<br>当我们将上述的序列化的字符串中的对象属性个数由真实值1修改为3，即如下所示</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">O</span>:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;xctf&quot;</span>:<span class="hljs-number">3</span>:&#123;s:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;flag&quot;</span>;s:<span class="hljs-number">3</span>:<span class="hljs-string">&quot;111&quot;</span>;&#125;<br></code></pre></td></tr></table></figure>
+<p>然后网址末尾code参数传入O:4:”xctf”:2:{s:4:”flag”;s:3:”111”;}<br>?code=O:4:”xctf”:2:{s:4:”flag”;s:3:”111”;}<br>直接访问得到显示结果。<br><img src="https://pic.imgdb.cn/item/618645af2ab3f51d91e2acf3.jpg" srcset="/img/loading2.gif" lazyload></p>
 
             </div>
             <hr>
@@ -263,7 +258,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/CTFHUB/">CTFHUB</a>
+                      <a class="hover-with-bg" href="/categories/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">攻防世界</a>
                     
                   </div>
                 
@@ -288,9 +283,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/09/24/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cview_source/">
+                      <a href="/2021/11/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-NewsCenter/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">view_source</span>
+                        <span class="hidden-mobile">攻防世界-NewsCenter</span>
                         <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
@@ -298,8 +293,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/09/13/daovioce/">
-                        <span class="hidden-mobile">Daovoice</span>
+                      <a href="/2021/10/06/uplads1/">
+                        <span class="hidden-mobile">uplads1</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
