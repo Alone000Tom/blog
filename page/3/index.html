@@ -20,8 +20,6 @@
   
   <title>Tom 的博客</title>
 
-
-
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
@@ -42,15 +40,11 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":150,"cursorChar":"ღ ","loop":true,"backspeed":200},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","Options":"hover | always | touch","visible":"hover","Option":"§ |","icon":" "},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":150,"cursorChar":"ღ ","loop":true,"backspeed":200},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":" "},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":false,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading2.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-
-
-
 <meta name="generator" content="Hexo 5.4.0"></head>
-
 
 
 <body>
@@ -188,83 +182,33 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/08/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweakauth/" target="_self">
-          攻防世界weakauth
+        <a href="/2021/09/28/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cmisc-stegano/" target="_self">
+          misc-stegano
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/08/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweakauth/" target="_self">
-          
-          
-            
-          
-          打开题目一个登录页面 随手设的密码
-打开环境发现是一个登录页面 说是随便设置的密码 简单猜一下(不行再爆破)试了试password  不行哈试了试123456 woc成功了
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-02 17:20" pubdate>
-              2021-08-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">攻防世界</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CTF/">CTF</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwebshell/" target="_self">
-          攻防世界webshell
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwebshell/" target="_self">
+        <a href="/2021/09/28/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cmisc-stegano/" target="_self">
           
           
             
           
           题目
-小宁把一段话放在index.php里面
+题目描述显示为PDF格式，提交格式flag{xxx}，解密需要小写。
 
-打开场景连接
-提示你会使用 webshell吗 搜索了解webshell为网站后门
-
-并且给了一段php代码 搜索了解为php一句话  因此推断小宁在index.php中插入了一句话后门
+下载附件
 
 
-菜刀
-使用菜刀 输入地址 密码为shell成功查看目录结构及其内容打开flag文件 成功得到
+打开PDF
+打开PDF发现为英文文章，首先进行翻译。
+
+翻译结果是一堆人名。无情——
 
 
+解决
+经过一系列操作无果，最终查找wp发现提供思路是复制内容到notpad++。复制粘贴后发现确实多了两行A、B组成的内容。
+
+根据提示显示将A替换成-，将B替换成.(尝试了A换为.B换为-)。直接复制解码发现解密失败
         </a>
       </p>
 
@@ -272,8 +216,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-02 15:54" pubdate>
-              2021-08-02
+            <time datetime="2021-09-28 20:01" pubdate>
+              2021-09-28
             </time>
           </div>
         
@@ -303,26 +247,20 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/06/php/" target="_self">
-          web信息泄露（php）
+        <a href="/2021/09/24/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cview_source/" target="_self">
+          view_source
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/07/06/php/" target="_self">
+        <a href="/2021/09/24/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cview_source/" target="_self">
           
           
             
           
-          &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; php
- 开启环境后，点击进入，查看图片，仔细搜索发现flag。
-
-
-
-
- 按f12 查看网页源码 ，搜索发现flag。
-
-
+          打开题目 题目描述x老师让小宁同学查看一个网页的源代码，但小宁同学发现鼠标右键好像不管用。
+打开题目发现，鼠标右键不能使用。由于题目提示查看网页源代码，使用f12查看网页源码。
+在网页源代码中发现flag！
 
         </a>
       </p>
@@ -331,8 +269,63 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-06 01:20" pubdate>
-              2021-07-06
+            <time datetime="2021-09-24 20:01" pubdate>
+              2021-09-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/">攻防世界</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/CTF/">CTF</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/20/ctfhub%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0htaccess/" target="_self">
+          文件上传--.htaccess
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/09/20/ctfhub%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0htaccess/" target="_self">
+          
+          
+            
+          
+          htaccess文件(或者”分布式配置文件”）,全称是Hypertext Access(超文本入口)。提供了针对目录改变配置的方法，即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。
+打开环境
+
+
+创建.htaccess文件
+写入文本  SetHandler
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-20 19:01" pubdate>
+              2021-09-20
             </time>
           </div>
         
@@ -362,18 +355,21 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/06/%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86/" target="_self">
-          web信息泄露（目录遍历）
+        <a href="/2021/09/13/daovioce/" target="_self">
+          Daovoice
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/07/06/%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86/" target="_self">
+        <a href="/2021/09/13/daovioce/" target="_self">
           
           
             
           
-          &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  目录遍历路径遍历攻击（也称为目录遍历）旨在访问存储在Web根文件夹之外的文件和目录。通过操纵带有“点-斜线（…）”序列及其变化的文件或使用绝对文件路径来引用文件的变量，可以访问存储在文件系统上的任意文件和目录，包括应用程序源代码、配置和关键系统文件。需要注意的是，系统操作访问控制（如在微软Windo
+          关于DaoVoiceDaoVoice 是一款革命性的应用运营平台，致力于帮助企业实现以用户为中心的「精益运营」体系。
+融合「在线聊天」、「客服支持」、「用户画像」、「消息推送」、「行为引导」等功能为一体， 按需获取用户信息和行为，实现场景化消息推送，让通知更富有人情味。
+接入只需 5 行代码，即可创建与用户实时沟通的窗口，无缝接入企业原有产品体系，拉近企业与用户的距离。
+秉承「数据驱动，精益运营」
         </a>
       </p>
 
@@ -381,8 +377,78 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-06 01:20" pubdate>
-              2021-07-06
+            <time datetime="2021-09-13 12:20" pubdate>
+              2021-09-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%85%B6%E4%BB%96/">其他</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A00x00/" target="_self">
+          文件上传-%00绕过
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/09/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A00x00/" target="_self">
+          
+          
+            
+          
+          打开题目
+存在文件上传点。不能上传php,asp；只能上传png,jpg,gif文件。
+
+
+
+
+上传图片马
+上传图片之后，发现不知道图片位置。
+
+
+
+
+
+
+上传图片马代理抓包。
+
+发现在第一行地址处upload之后无路径；加上文件名称，%00截断修改包后发送。显示上传成功！
+
+
+蚁剑链接
+一开始复制浏览器地址加上upload/1.php（http://challenge-610973f02b095
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-09 20:01" pubdate>
+              2021-09-09
             </time>
           </div>
         
@@ -399,49 +465,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/CTF/">CTF</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/05/Second/" target="_self">
-          Second blog
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/05/Second/" target="_self">
-          
-          
-            
-          
-          有点晚了&emsp;  &emsp;  &emsp;&emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; 就来想试试&emsp;  &emsp; &emsp; &emsp; &emsp; 居然折磨晚了&emsp; &emsp; &emsp; 哈哈哈&emsp;  &nbsp; &emsp; &emsp; &emsp; &emsp; &emsp; &em
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-05 22:20" pubdate>
-              2021-07-05
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/HELLO/">HELLO</a>
             
           </div>
         
@@ -453,35 +476,9 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-
-
-
-
-
-<!--DaoVoice服务http://blog.daovoice.io/-->
-
-  <script>(function (i, s, o, g, r, a, m) {
-      i['DaoVoiceObject'] = r;
-      i[r] = i[r] ||
-        function () {
-          (i[r].q = i[r].q || []).push(arguments);
-        };
-      i[r].l = 1 * new Date();
-      a = s.createElement(o);
-      m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      a.charset = 'utf-8';
-      m.parentNode.insertBefore(a, m);
-    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/bd08af05.js", 'daovoice');
-    daovoice('init', {
-      app_id: "bd08af05",
-    });
-    daovoice('update');
-  </script>
 
 
 
@@ -541,12 +538,19 @@
     </span>
     
       
-        <span class="beian-police">
-          
-            <span style="visibility: hidden; width: 0">|</span>
-            <img src="/img/yejiao32.png" srcset="/img/loading2.gif" lazyload alt="police-icon"/>
-          
-          <span class="beian-police">No Security ——Alone</span>
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/yejiao32.png" srcset="/img/loading2.gif" lazyload alt="police-icon"/>
+            
+            <span>No Security ——Alone</span>
+          </a>
         </span>
       
     
@@ -571,107 +575,12 @@
         mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
         seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
         snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-        document.getElementById("timeDate").innerHTML = "This website has been running for"+dnum+" d "; 
-        document.getElementById("times").innerHTML = hnum + " h " + mnum + " m " + snum + " s "; 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
     } 
 setInterval("createtime()",250);
 </script>
 
-
-
-
-
-
-
-<div class="github-badge">
-  <a style="color: #fff" rel="license" href="https://github.com/" target="_blank" title="静态网页托管于 GitHub Pages">
-  <span class="badge-subject">Hosted</span><span class="badge-value bg-brightgreen">GitHub </span></a>
-</div>
-
-
-
-
-
-
-
-<div class="github-badge">
-  <a style="color: #fff" rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="本站点采用知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议进行许可">
-  <span class="badge-subject"><i class="fa fa-copyright"></i></span><span class="badge-value bg-lightgrey">BY-NC-SA 4.0</span></a>
-</div>
-
-<div class="github-badge">
-  <a style="color: #fff" rel="license" href="https://996.icu/" target="_blank" title="支持 996.ICU">
-  <span class="badge-subject">Link</span><span class="badge-value bg-red">996.ICU</span></a>
-</div>
-
-<div class="github-badge">
-  <span class="badge-subject">UV</span><span class="badge-value bg-orange" id="busuanzi_value_site_uv"></span>人
-</div>
-
-<div class="github-badge">
-  <span class="badge-subject">PV</span><span class="badge-value bg-brightgreen" id="busuanzi_value_site_pv"></span>次
-</div>
-
-<div class="github-badge">
-  <span class="badge-subject">WordCount</span><span class="badge-value bg-blueviolet">2.8k</span>
-</div>
-</div>
-
-<style>
-  .github-badge {
-      display:inline-block;
-      border-radius:4px;
-      text-shadow:none;
-      font-size:13px;
-      color:#fff;
-      line-height:15px;
-      background-color:#09ff2a;
-      margin-bottom:5px;
-  }
-  .github-badge .badge-subject {
-      display:inline-block;
-      background-color:#16b4f3;
-      padding:4px 4px 4px 6px;
-      border-top-left-radius:4px;
-      border-bottom-left-radius:4px;
-  }
-  .github-badge .badge-value {
-      display:inline-block;
-      padding:4px 6px 4px 4px;
-      border-top-right-radius:4px;
-      border-bottom-right-radius:4px;
-  }
-  .github-badge .bg-brightgreen {
-      background-color:#4DC820 !important;
-  }
-  .github-badge .bg-orange {
-      background-color:#FFA500 !important;
-  }
-  .github-badge .bg-yellow {
-      background-color:#D8B024 !important;
-  }
-  .github-badge .bg-blueviolet {
-      background-color:#8833D7 !important;
-  }
-  .github-badge .bg-pink {
-      background-color:#F26BAE !important;
-  }
-  .github-badge .bg-red {
-      background-color:#e05d44 !important;
-  }
-  .github-badge .bg-blue {
-      background-color:#007EC6 !important;
-  }
-  .github-badge .bg-lightgrey {
-      background-color:#9F9F9F !important;
-  }
-  .github-badge .bg-grey, .github-badge .bg-gray {
-      background-color:#555 !important;
-  }
-  .github-badge .bg-lightgrey, .github-badge .bg-lightgray {
-      background-color:#9f9f9f !important;
-  }
-</style>
 
   <!-- SCRIPTS -->
   
@@ -790,59 +699,5 @@ setInterval("createtime()",250);
 
 <!--动态线条背景-->
 <script type="text/javascript"
-color="154 255 154" opacity='0.6' zIndex="-2" count="170" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js" >
+color="154 255 154" opacity='0.6' zIndex="-2" count="150" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js" >
 </script>
-
-<!-- 一言API -->
-<!-- 现代写法，推荐 -->
-<!-- 兼容低版本浏览器 (包括 IE)，可移除 -->
-<script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
-<!--End-->
-<script>
-  fetch('https://v1.hitokoto.cn')
-    .then(function (res){
-      return res.json();
-    })
-    .then(function (data) {
-      var hitokoto = document.getElementById('hitokoto');
-      hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
-    })
-    .catch(function (err) {
-      console.error(err);
-    })
-</script>
-
-
-
-<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
-<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-<script type="text/javascript" src="/js/fireworks.js"></script>
-
-
-
-
-
-
-<!--DaoVoice服务http://blog.daovoice.io/-->
-
-  <script>(function (i, s, o, g, r, a, m) {
-      i['DaoVoiceObject'] = r;
-      i[r] = i[r] ||
-        function () {
-          (i[r].q = i[r].q || []).push(arguments);
-        };
-      i[r].l = 1 * new Date();
-      a = s.createElement(o);
-      m = s.getElementsByTagName(o)[0];
-      a.async = 1;
-      a.src = g;
-      a.charset = 'utf-8';
-      m.parentNode.insertBefore(a, m);
-    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/bd08af05.js", 'daovoice');
-    daovoice('init', {
-      app_id: "bd08af05",
-    });
-    daovoice('update');
-  </script>
-
