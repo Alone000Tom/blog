@@ -4,6 +4,269 @@
   
   
   <entry>
+    <title>Hello World</title>
+    <link href="/2021/11/23/hello-world/"/>
+    <url>/2021/11/23/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>MD5加密漏洞</title>
+    <link href="/2021/11/07/MD5%E5%8A%A0%E5%AF%86%E6%BC%8F%E6%B4%9E/"/>
+    <url>/2021/11/07/MD5%E5%8A%A0%E5%AF%86%E6%BC%8F%E6%B4%9E/</url>
+    
+    <content type="html"><![CDATA[<p>MD5是一种散列函数,是哈希算法的一种,可以将任意长度的输入,通过散列算法变换成128位的散列值</p><h1 id="MD5加密有4种绕过方式"><a href="#MD5加密有4种绕过方式" class="headerlink" title="MD5加密有4种绕过方式"></a>MD5加密有4种绕过方式</h1><blockquote><p>0e绕过<br>数组绕过<br>MD5碰撞<br>MD5SQL注入</p></blockquote><h2 id="0e绕过"><a href="#0e绕过" class="headerlink" title="0e绕过"></a>0e绕过</h2><p>0e开头的字符串在参与比较时,会被当做科学计数法,结果转换为0<br> 比如将两个md5值进行弱类型比较<br>md5(‘QNKCDZO’) == md5(240610708)<br>MD5加密后会变成这个样子</p><p>0e830400451993494058024219903391 == 0e462097431906509019562988736854</p><p>由于0e开头的字符串会转换为0,所以真正比较的过程会变成下面这样<br>0 == 0<br>返回结果为true,也就是说0e开头的md5值进行弱类型比较时,结果相等</p><p>常用的MD5加密后以0E开头的有</p><pre><code>QNKCDZO240610708byGcYsonZ7yaabg7XSsaabC9RqSs878926199as155964671as214587387as1091221200a</code></pre><p>这些字符串的 md5 值都是 0e 开头，在 php 弱类型比较中判断为相等</p><h2 id="数组绕过"><a href="#数组绕过" class="headerlink" title="数组绕过"></a>数组绕过</h2><p>md5不能加密数组,传入数组会报错,但会继续执行并且返回结果为null</p><p> 比如将两个数组的md5值进行比较<br>md5(a[]=1) === md5(b[]=1)</p><p>如下代码</p><blockquote><p>var_dump(md5($_GET[‘a’]) == md5($_GET[‘b’]))<br>传入<br>a[]=a&amp;b[]=b </p></blockquote><p>由于md5函数无法处理数组,会返回null,所以md5加密后的结果是下面这样<br>null === null<br>结果返回true,也就是说数组的md5值进行比较时,结果相等<br>需要注意的是0e绕过只能绕过弱类型比较(==),而数组绕过不只可以绕过弱类型比较,还可以绕过强类型比较(===)<br>弱类型比较(==),只判断内容是否相等,如果是字符串类型,则转换成数值型后进行判断<br>强类型比较(===),判断内容的基础上,还会判断类型是否相同</p><h2 id="强类型绕过"><a href="#强类型绕过" class="headerlink" title="强类型绕过"></a>强类型绕过</h2><p><code>if((string)$_POST[&#39;a&#39;] !== (string)$_POST[&#39;b&#39;] &amp;&amp; md5($_POST[&#39;a&#39;]) === md5($_POST[&#39;b&#39;]))</code><br>[安洵杯 2019]easy_web（buu有环境） 的源码，第一次遇到这个，我直接懵逼<br>payload:</p><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs llvm">a<span class="hljs-operator">=</span><span class="hljs-variable">%4</span>d<span class="hljs-variable">%c9</span><span class="hljs-variable">%68</span><span class="hljs-variable">%ff</span><span class="hljs-variable">%0</span>e<span class="hljs-variable">%e3</span><span class="hljs-variable">%5</span><span class="hljs-keyword">c</span><span class="hljs-variable">%20</span><span class="hljs-variable">%95</span><span class="hljs-variable">%72</span><span class="hljs-variable">%d4</span><span class="hljs-variable">%77</span><span class="hljs-variable">%7</span>b<span class="hljs-variable">%72</span><span class="hljs-variable">%15</span><span class="hljs-variable">%87</span><span class="hljs-variable">%d3</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%a7</span><span class="hljs-variable">%b2</span><span class="hljs-variable">%1</span>b<span class="hljs-variable">%dc</span><span class="hljs-variable">%56</span><span class="hljs-variable">%b7</span><span class="hljs-variable">%4</span>a<span class="hljs-variable">%3</span>d<span class="hljs-variable">%c0</span><span class="hljs-variable">%78</span><span class="hljs-variable">%3</span>e<span class="hljs-variable">%7</span>b<span class="hljs-variable">%95</span><span class="hljs-variable">%18</span><span class="hljs-variable">%af</span><span class="hljs-variable">%bf</span><span class="hljs-variable">%a2</span><span class="hljs-variable">%00</span><span class="hljs-variable">%a8</span><span class="hljs-variable">%28</span><span class="hljs-variable">%4</span>b<span class="hljs-variable">%f3</span><span class="hljs-variable">%6</span>e<span class="hljs-variable">%8</span>e<span class="hljs-variable">%4</span>b<span class="hljs-variable">%55</span><span class="hljs-variable">%b3</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%42</span><span class="hljs-variable">%75</span><span class="hljs-variable">%93</span><span class="hljs-variable">%d8</span><span class="hljs-variable">%49</span><span class="hljs-variable">%67</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%a0</span><span class="hljs-variable">%d1</span><span class="hljs-variable">%55</span><span class="hljs-variable">%5</span>d<span class="hljs-variable">%83</span><span class="hljs-variable">%60</span><span class="hljs-variable">%fb</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%07</span><span class="hljs-variable">%fe</span><span class="hljs-variable">%a2</span><br>&amp;b<span class="hljs-operator">=</span><span class="hljs-variable">%4</span>d<span class="hljs-variable">%c9</span><span class="hljs-variable">%68</span><span class="hljs-variable">%ff</span><span class="hljs-variable">%0</span>e<span class="hljs-variable">%e3</span><span class="hljs-variable">%5</span><span class="hljs-keyword">c</span><span class="hljs-variable">%20</span><span class="hljs-variable">%95</span><span class="hljs-variable">%72</span><span class="hljs-variable">%d4</span><span class="hljs-variable">%77</span><span class="hljs-variable">%7</span>b<span class="hljs-variable">%72</span><span class="hljs-variable">%15</span><span class="hljs-variable">%87</span><span class="hljs-variable">%d3</span><span class="hljs-variable">%6</span>f<span class="hljs-variable">%a7</span><span class="hljs-variable">%b2</span><span class="hljs-variable">%1</span>b<span class="hljs-variable">%dc</span><span class="hljs-variable">%56</span><span class="hljs-variable">%b7</span><span class="hljs-variable">%4</span>a<span class="hljs-variable">%3</span>d<span class="hljs-variable">%c0</span><span class="hljs-variable">%78</span><span class="hljs-variable">%3</span>e<span class="hljs-variable">%7</span>b<span class="hljs-variable">%95</span><span class="hljs-variable">%18</span><span class="hljs-variable">%af</span><span class="hljs-variable">%bf</span><span class="hljs-variable">%a2</span><span class="hljs-variable">%02</span><span class="hljs-variable">%a8</span><span class="hljs-variable">%28</span><span class="hljs-variable">%4</span>b<span class="hljs-variable">%f3</span><span class="hljs-variable">%6</span>e<span class="hljs-variable">%8</span>e<span class="hljs-variable">%4</span>b<span class="hljs-variable">%55</span><span class="hljs-variable">%b3</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%42</span><span class="hljs-variable">%75</span><span class="hljs-variable">%93</span><span class="hljs-variable">%d8</span><span class="hljs-variable">%49</span><span class="hljs-variable">%67</span><span class="hljs-variable">%6</span>d<span class="hljs-variable">%a0</span><span class="hljs-variable">%d1</span><span class="hljs-variable">%d5</span><span class="hljs-variable">%5</span>d<span class="hljs-variable">%83</span><span class="hljs-variable">%60</span><span class="hljs-variable">%fb</span><span class="hljs-variable">%5</span>f<span class="hljs-variable">%07</span><span class="hljs-variable">%fe</span><span class="hljs-variable">%a2</span><br><br></code></pre></td></tr></table></figure><p>进行url解码后的MD5值相等</p><h2 id="MD5碰撞"><a href="#MD5碰撞" class="headerlink" title="MD5碰撞"></a>MD5碰撞</h2><p>MD5碰撞也叫哈希碰撞,是指两个不同内容的输入,经过散列算法后,得到相同的输出,也就是两个不同的值的散列值相同</p><h2 id="MD5-SQL注入"><a href="#MD5-SQL注入" class="headerlink" title="MD5-SQL注入"></a>MD5-SQL注入</h2><p>ffifdyop 的MD5加密结果是 276f722736c95d99e921722cf9ed621c</p><p>经过MySQL编码后会变成’or’6xxx,使SQL恒成立,相当于万能密码,可以绕过md5()函数的加密</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>其他</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ctfhub-URL伪协议</title>
+    <link href="/2021/11/07/ctfhub-URL%E4%BC%AA%E5%8D%8F%E8%AE%AE/"/>
+    <url>/2021/11/07/ctfhub-URL%E4%BC%AA%E5%8D%8F%E8%AE%AE/</url>
+    
+    <content type="html"><![CDATA[<p>URL伪协议：<br>file://  本地文件传输协议，File协议主要用于访问本地计算机中的文件，就如同在Windows资源管理器中打开文件一样<br>dict://  Dict协议,字典服务器器协议,dict是基于查询响应的TCP协议,它的目标是超越Webster protocol，并允许客户端在使用过程中访问更多字典。Dict服务器和客户机使用TCP端口2628<br>gopher://  Gopher协议是互联网上使用的分布型的文件搜集获取网络协议。gopher协议是在HTTP协议出现之前,在internet上常见重用的协议,但是现在已经用的很少了<br>sftp://  Sftp代表SSH文件传输协议（SSH File Transfer Protocol），或安全文件传输协议（Secure File Transfer Protocol），这是一种与SSH打包在一起的单独协议，它运行在安全连接上，并以类似的方式进行工作<br>ldap://  LDAP代表轻量级目录访问协议。它是IP网络上的一种用于管理和访问分布式目录信息服务的应用程序协议<br>tftp://  TFTP（Trivial File Transfer Protocol,简单文件传输协议）是一种简单的基于lockstep机制的文件传输协议，它允许客户端从远程主机获取文件或将文件上传至远程主机。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ctfhub</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ctfhub-内网访问</title>
+    <link href="/2021/11/07/ctfhub-%E5%86%85%E7%BD%91%E8%AE%BF%E9%97%AE/"/>
+    <url>/2021/11/07/ctfhub-%E5%86%85%E7%BD%91%E8%AE%BF%E9%97%AE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="打开题目"><a href="#打开题目" class="headerlink" title="打开题目"></a>打开题目</h1><p><img src="https://pic.imgdb.cn/item/61868d852ab3f51d9158221b.jpg"></p><blockquote><p>强调访问127.0.0.1/flag.php<br>打开环境地址为<a href="http://challenge-e7aed46229f00f03.sandbox.ctfhub.com:10800/?url=">http://challenge-e7aed46229f00f03.sandbox.ctfhub.com:10800/?url=</a>_<br>末尾存在url=猜测可能加上url=127.0.0.1/flag.php(去掉第一个_)</p></blockquote><h1 id="得到flag"><a href="#得到flag" class="headerlink" title="得到flag"></a>得到flag</h1><p><img src="https://pic.imgdb.cn/item/61868e6b2ab3f51d915975d7.jpg"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ctfhub</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>攻防世界-NaNNaNNaNNaN-Batman</title>
+    <link href="/2021/11/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-NaNNaNNaNNaN-Batman/"/>
+    <url>/2021/11/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-NaNNaNNaNNaN-Batman/</url>
+    
+    <content type="html"><![CDATA[<h1 id="下载附件"><a href="#下载附件" class="headerlink" title="下载附件"></a>下载附件</h1><p><img src="https://i.loli.net/2021/11/06/1YNGlEPAmjToR7C.png" alt="(◕ᴗ◕✿)"></p><blockquote><p>直接打开一段乱码，改为html尾，打开出现一个输入框。<br>搜索发现说改为aert，弹出框框<br><img src="https://i.loli.net/2021/11/06/pyskLhMBuYxTQC9.png" alt="(◕ᴗ◕✿)"><br>发现代码内容<br>‘’’<br>function $(){var<br>e=document.getElementByld(“ c”).value;if(e.length==16)if(e.match(/^be0f23/)!=null)if(e.match(/233ac/)!=null)if(e.match(/e98aa$/)!=null)if(e.match(/c7be9/)!=null){var t=[“fl” ,”s_a” ,”i” ,”e}” ];varn=[“a”,”_hOl”,”n”];var r=[“g{“ ,”e”,”<em>O”];var i=[“it’”,”</em>“, “n”];vars=[t,n,r,i];for(var o=0;o&lt;13;++o){document.write(s[o%4]<br>[0]);s[o%4].splice(0,1)l}document.write(‘ einput id=”c” &gt; &lt;buttononclick=$()&gt; Ok </button >‘);delete </p></blockquote><p>‘’’</p><blockquote><p>发现匹配字符串<br>be0f23  233ac  c7be9   e98aa<br>和成为：be0f233ac7be98aa</p></blockquote><p>将字符串输入到输入框中得到flag<br>flag{it’s_a_h0le_in_0ne}</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>攻防世界</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>攻防世界-NewsCenter</title>
+    <link href="/2021/11/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-NewsCenter/"/>
+    <url>/2021/11/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-NewsCenter/</url>
+    
+    <content type="html"><![CDATA[<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p><a href="http://111.200.241.244:62361/">http://111.200.241.244:62361</a></p><blockquote><p>打开发现为一搜索框，输入1,2,3没反应，了解到可能为xss或者sql注入。</p></blockquote><h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><blockquote><p>测试发现’闭合，输入-1’ union select 1,2,3#回显2,3.</p><blockquote><p><img src="https://i.loli.net/2021/11/05/HiqB87ynfAwjESJ.png" alt="＜(▰˘◡˘▰)"></p></blockquote></blockquote><h1 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h1><blockquote><p>利用2,3回显点直接注入。database()先得到数据库名称。</p><blockquote><p><img src="https://i.loli.net/2021/11/05/YM1UBPsVkXm2OFD.png" alt="＜(▰˘◡˘▰)"><br>得到表名。<br><img src="https://i.loli.net/2021/11/05/mM3aR5u2qfkB4WF.png" alt="＜(▰˘◡˘▰)"><br>得到列名<br><img src="https://i.loli.net/2021/11/05/DdmFiQ8LEMrbRCu.png" alt="＜(▰˘◡˘▰)"><br>得到列内内容<br><img src="https://i.loli.net/2021/11/05/hAsygvYONe2G4pZ.png" alt="(◕ᴗ◕✿)"></p></blockquote></blockquote><h1 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h1><blockquote><p>抓包获取请求包，保存为1.txt文件<br>直接查看news中的内容。<br>py sqlmap.py -r 1.txt -D news -dump</p><blockquote><p><img src="https://i.loli.net/2021/11/06/rBUk6j8NDbuXKdO.png" alt="＜(▰˘◡˘▰)"></p></blockquote></blockquote><h1 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>攻防世界</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>攻防世界-unserialize3</title>
+    <link href="/2021/11/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-unserialize3/"/>
+    <url>/2021/11/07/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-unserialize3/</url>
+    
+    <content type="html"><![CDATA[<h1 id="一-根据题目猜测这道题应该和反序列化漏洞有关"><a href="#一-根据题目猜测这道题应该和反序列化漏洞有关" class="headerlink" title="一.根据题目猜测这道题应该和反序列化漏洞有关"></a>一.根据题目猜测这道题应该和反序列化漏洞有关</h1><h2 id="1-先了解一下什么是序列化和反序列化"><a href="#1-先了解一下什么是序列化和反序列化" class="headerlink" title="1.先了解一下什么是序列化和反序列化"></a>1.先了解一下什么是序列化和反序列化</h2><p>当在php中创建了一个对象后，可以通过 serialize() 函数把这个对象转变成一个字符串，保存对象的值方便之后的传递与使用。<br>与 serialize() 相反的就是反序列化函数 unserialize() ，它可以将一个字符串转变为相对应的php对象。</p><blockquote><p>在序列化过程中会用到的函数：<br>    __construct()：当对象创建（new）时会自动调用。但在 unserialize() 时是不会自动调用的。（构造函数）<br>    __destruct()：当对象被销毁时会自动调用。（析构函数）<br>    __wakeup()：unserialize() 时会自动调用。<br>    __sleep() 在对象被序列化之前运行。<br>    __toString ()当一个对象被当作一个字符串使用。<br>从序列化到反序列化这几个函数的执行过程是：<br>先调用__construct()-&gt;__sleep-&gt;__wakeup()-&gt;__toString ()-&gt;__destruct()</p></blockquote><h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">xctf</span></span>&#123;                      <span class="hljs-comment">//定义一个名为xctf的类</span><br><span class="hljs-keyword">public</span> <span class="hljs-variable">$flag</span> = <span class="hljs-string">&#x27;111&#x27;</span>;            <span class="hljs-comment">//定义一个公有的类属性$flag，值为111</span><br><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>&#123;      <span class="hljs-comment">//定义一个公有的类方法__wakeup()，输出bad requests后退出当前脚本</span><br><span class="hljs-keyword">exit</span>(<span class="hljs-string">&#x27;bad requests&#x27;</span>);<br>&#125;<br>&#125;<br><span class="hljs-variable">$peak</span> = <span class="hljs-keyword">new</span> xctf();           <span class="hljs-comment">//使用new运算符来实例化该类（xctf）的对象为peak</span><br><span class="hljs-keyword">echo</span>(serialize(<span class="hljs-variable">$peak</span>));       <span class="hljs-comment">//输出被序列化的对象（peak）</span><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure><p><img src="https://pic.imgdb.cn/item/618644062ab3f51d91e08c1d.jpg"><br>因此，我们要反序列化xctf类的同时还要绕过__wakeup方法的执行（如果不绕过__wakeup()方法，那么将会输出bad requests并退出脚本），__wakeup()函数漏洞原理：当序列化字符串表示对象属性个数的值大于真实个数的属性时就会跳过__wakeup的执行。因此，需要修改序列化字符串中的属性个数：<br>当我们将上述的序列化的字符串中的对象属性个数由真实值1修改为3，即如下所示</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">O</span>:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;xctf&quot;</span>:<span class="hljs-number">3</span>:&#123;s:<span class="hljs-number">4</span>:<span class="hljs-string">&quot;flag&quot;</span>;s:<span class="hljs-number">3</span>:<span class="hljs-string">&quot;111&quot;</span>;&#125;<br></code></pre></td></tr></table></figure><p>然后网址末尾code参数传入O:4:”xctf”:2:{s:4:”flag”;s:3:”111”;}<br>?code=O:4:”xctf”:2:{s:4:”flag”;s:3:”111”;}<br>直接访问得到显示结果。<br><img src="https://pic.imgdb.cn/item/618645af2ab3f51d91e2acf3.jpg"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>攻防世界</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>uplads1</title>
+    <link href="/2021/10/06/uplads1/"/>
+    <url>/2021/10/06/uplads1/</url>
+    
+    <content type="html"><![CDATA[<p>上传一个php文件显示只能上传jpg.png.gif文件，打开代理，在抓包之前就显示上传限制，初步确定为前端检测过滤，右键查看源码，发现存在javascript代码起到过滤作用。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span><br><span class="javascript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkFile</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">        <span class="hljs-keyword">var</span> file = <span class="hljs-built_in">document</span>.getElementsByName(<span class="hljs-string">&#x27;upload_file&#x27;</span>)[<span class="hljs-number">0</span>].value;</span><br><span class="javascript">        <span class="hljs-keyword">if</span> (file == <span class="hljs-literal">null</span> || file == <span class="hljs-string">&quot;&quot;</span>) &#123;</span><br><span class="javascript">            alert(<span class="hljs-string">&quot;请选择要上传的文件!&quot;</span>);</span><br><span class="javascript">            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="javascript">        &#125;</span><br><span class="javascript">        <span class="hljs-comment">//定义允许上传的文件类型</span></span><br><span class="javascript">        <span class="hljs-keyword">var</span> allow_ext = <span class="hljs-string">&quot;.jpg|.png|.gif&quot;</span>;</span><br><span class="javascript">        <span class="hljs-comment">//提取上传文件的类型</span></span><br><span class="javascript">        <span class="hljs-keyword">var</span> ext_name = file.substring(file.lastIndexOf(<span class="hljs-string">&quot;.&quot;</span>));</span><br><span class="javascript">        <span class="hljs-comment">//判断上传文件类型是否允许上传</span></span><br><span class="javascript">        <span class="hljs-keyword">if</span> (allow_ext.indexOf(ext_name) == -<span class="hljs-number">1</span>) &#123;</span><br><span class="javascript">            <span class="hljs-keyword">var</span> errMsg = <span class="hljs-string">&quot;该文件不允许上传，请上传&quot;</span> + allow_ext + <span class="hljs-string">&quot;类型的文件,当前文件类型为：&quot;</span> + ext_name;</span><br><span class="javascript">            alert(errMsg);</span><br><span class="javascript">            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="javascript">        &#125;</span><br><span class="javascript">    &#125;</span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>uplads</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>文件上传</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>RCE-文件包含</title>
+    <link href="/2021/10/01/RCE-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
+    <url>/2021/10/01/RCE-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/</url>
+    
+    <content type="html"><![CDATA[<h1 id="打开题目"><a href="#打开题目" class="headerlink" title="打开题目"></a>打开题目</h1><p><img src="https://i.loli.net/2021/10/01/sBlFk9UtvXMO2gT.png" alt="(◕ᴗ◕✿)"><br>php代码没学过，但可以看出大概是file传入一个值是flag就显示Hacker!!!</p><h1 id="探索"><a href="#探索" class="headerlink" title="探索"></a>探索</h1><p>下面有一个shell点击看看。<br><img src="https://i.loli.net/2021/10/01/T7VNoALaMbWdrvX.png" alt="(◕ᴗ◕✿)"><br>进入了shell.txt 看样子需要一个ctfhub参数。</p><blockquote><blockquote><p>php函数system<br>本文介绍了php函数system(),exec(),passthru()的区别与详细用法，有需要的朋友参考下。<br>php提供了system(),exec(),passthru()这几个函数来调用外部的命令.<br>区别:<br>system() 输出并返回最后一行shell结果。<br>exec() 不输出结果，返回最后一行shell结果，所有结果可以保存到一个返回的数组里面。<br>passthru() 只调用命令，把命令的运行结果原样地直接输出到标准输出设备上。<br>相同点：都可以获得命令执行的状态码在php中调用外部命令，可以用如下三种方法来实现：<br>1） 用php提供的专门函数<br>php提供共了3个专门的执行外部命令的函数：system()，exec()，passthru()。<br>system()<br>原型：string system (string command [, int return_var])<br>system()函数很其它语言中的差不多，它执行给定的命令，输出和返回结果。第二个参数是可选的，用来得到命令执行后的状态码。<br>例子<code>system(&quot;/usr/local/bin/webalizer/webalizer&quot;)</code></p></blockquote></blockquote><blockquote><p>调用ls查看目录<br><img src="https://i.loli.net/2021/10/01/JW8EKIxzgoFeZ2q.png" alt="(◕ᴗ◕✿)"></p></blockquote><hr><blockquote><p>调用上级目录</p><blockquote><p>system(ls /)<br><img src="https://i.loli.net/2021/10/01/MTcXqR9eun1o7Iv.png" alt="(◕ᴗ◕✿)"><br>发现存在的文件目录，有一个flag。</p></blockquote></blockquote><hr><blockquote><p>读取内容</p><blockquote><p>system(cat * )<br>读取内容。<br><img src="https://i.loli.net/2021/10/01/NhCgZFbV36kPL45.png" alt="(◕ᴗ◕✿)"></p></blockquote></blockquote><h1 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h1><p>找到flag。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTFHUB</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>文件头检查</title>
+    <link href="/2021/09/28/ctfhub%E6%96%87%E4%BB%B6%E5%A4%B4%E6%A3%80%E6%B5%8B/"/>
+    <url>/2021/09/28/ctfhub%E6%96%87%E4%BB%B6%E5%A4%B4%E6%A3%80%E6%B5%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>打开是一个文件上传。</p><h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>上传.php文件显示只能上传.jpg  .png   .gif类型文件。<br>上传.jpg   .png    .jif文件显示文件错误。也不知道错在哪我c连正常jpg都不能上传？？？</p><p>更不用说上传图片马了 都显示文件错误。</p><blockquote><p>上传图片抓包加入一句话不行，<br>上传在制作的图片马不行，<br>上传.cer也不行…..</p></blockquote><p>这个问题把我搞得懵懵逼（*゜Д゜）σ凸←自爆按钮 </p><p>搜索wp多数为上传图片马，抓包就改为png文件，我做了就不对呢？？<br>还有在图片内容文件头加上png文件头，我。。。。。文件错误。。。<br>多少次开启都不行 哎。。</p><h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>搜索了一个wp感觉这个方法很好，方便快捷，一试就OK了。赞~<br><strong>直接写一个一句话，前面加上gif文件格式的文件头</strong></p><blockquote><blockquote><p>由此可知，文件头检测，检测的是内容中文件头部分。<br><img src="https://i.loli.net/2021/09/30/ldbv1ESg5PqO3Jk.png" alt="＜(▰˘◡˘▰)"></p></blockquote></blockquote><h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p>上传后得到地址链接。得到flag。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ctfhub</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>misc-stegano</title>
+    <link href="/2021/09/28/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cmisc-stegano/"/>
+    <url>/2021/09/28/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cmisc-stegano/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote><p><img src="https://i.loli.net/2021/09/29/XhkcP9MWeJnNiKS.png" alt=" (๑⁼̴̀д⁼̴́๑)ﾄﾞﾔｯ‼ What are you 弄啥嘞！"><br>题目描述显示为PDF格式，提交格式flag{xxx}，解密需要小写。</p><blockquote><p>下载附件</p></blockquote></blockquote><h1 id="打开PDF"><a href="#打开PDF" class="headerlink" title="打开PDF"></a>打开PDF</h1><blockquote><p>打开PDF发现为英文文章，首先进行翻译。</p><blockquote><p><img src="https://i.loli.net/2021/09/29/uztNhBEX2ifaQk5.png" alt="(๑⁼̴̀д⁼̴́๑)ﾄﾞﾔｯ‼ What are you 弄啥嘞！"><br><img src="https://i.loli.net/2021/09/29/VpBsJo1NibTZykq.png" alt="（(๑⁼̴̀д⁼̴́๑)ﾄﾞﾔｯ‼ What are you 弄啥嘞！"><br>翻译结果是一堆人名。无情——</p></blockquote></blockquote><h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><blockquote><p>经过一系列操作无果，最终查找wp发现提供思路是复制内容到notpad++。<br>复制粘贴后发现确实多了两行A、B组成的内容。</p><blockquote><p><img src="https://i.loli.net/2021/09/29/SoIdpz4DNuCfKYs.png" alt="(๑⁼̴̀д⁼̴́๑)ﾄﾞﾔｯ‼ What are you 弄啥嘞！"><br>根据提示显示将A替换成-，将B替换成.(尝试了A换为.B换为-)。<br><img src="https://i.loli.net/2021/09/29/N2F5CyIhBgPYSWD.png" alt="(๑⁼̴̀д⁼̴́๑)ﾄﾞﾔｯ‼ What are you 弄啥嘞！"><br>直接复制解码发现解密失败，在一个解码中发现空格需要使用/替换。<br><img src="https://i.loli.net/2021/09/29/7hFROGvxTlPrydH.png" alt="(๑⁼̴̀д⁼̴́๑)ﾄﾞﾔｯ‼ What are you 弄啥嘞！"></p></blockquote></blockquote><h1 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h1><blockquote><p>解码结果为大写，由于题目及要求右键转化为小写。</p><blockquote><p><img src="https://i.loli.net/2021/09/29/iXNw1kKAQJsFTot.png" alt="(๑⁼̴̀д⁼̴́๑)ﾄﾞﾔｯ‼ What are you 弄啥嘞！"></p></blockquote></blockquote><blockquote><p>两边加上{}得到最终flag.</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>攻防世界</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>view_source</title>
     <link href="/2021/09/24/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cview_source/"/>
     <url>/2021/09/24/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cview_source/</url>
@@ -279,18 +542,12 @@
   
   
   <entry>
-    <title>攻防世界webshell</title>
+    <title>攻防世界 webshell</title>
     <link href="/2021/08/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwebshell/"/>
     <url>/2021/08/02/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cwebshell/</url>
     
-    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote><p>小宁把一段话放在index.php里面<br><img src="https://i.loli.net/2021/08/02/F3KEqb8l7uWJXZg.png" alt="ヽ(ー_ー)ノ"></p></blockquote><h1 id="打开场景连接"><a href="#打开场景连接" class="headerlink" title="打开场景连接"></a>打开场景连接</h1><blockquote><p>提示你会使用 webshell吗 搜索了解webshell为网站后门</p><blockquote><p>并且给了一段php代码 搜索了解为php一句话  因此推断小宁在index.php中插入了一句话后门<br><img src="https://i.loli.net/2021/08/02/JqQluf6Ci5bVzG9.png" alt="_ヽ(ー_ー)ノ"></p></blockquote></blockquote><h1 id="菜刀"><a href="#菜刀" class="headerlink" title="菜刀"></a>菜刀</h1><blockquote><p>使用菜刀 输入地址 密码为shell<br><img src="https://i.loli.net/2021/08/02/5MsYGIQj1pzAgnR.png" alt="ヽ(ー_ー)ノ"><br>成功查看目录结构及其内容<br>打开flag文件 成功得到<br><img src="https://i.loli.net/2021/08/02/FTr3alevy8ogBRM.png" alt="ヽ(ー_ー)ノ"></p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><blockquote><p>小宁把一段话放在index.php里面<br><img src="https://i.loli.net/2021/08/02/F3KEqb8l7uWJXZg.png" alt="@91ZA@2GMPRDDBS5WI_9~LK.png"></p></blockquote><h1 id="打开场景连接"><a href="#打开场景连接" class="headerlink" title="打开场景连接"></a>打开场景连接</h1><blockquote><p>提示你会使用 webshell吗 搜索了解webshell为网站后门</p><blockquote><p>并且给了一段php代码 搜索了解为php一句话  因此推断小宁在index.php中插入了一句话后门<br><img src="https://i.loli.net/2021/08/02/JqQluf6Ci5bVzG9.png" alt="_ITCSD_R_MIO9_YHAUB6X5F.png"></p></blockquote></blockquote><h1 id="菜刀"><a href="#菜刀" class="headerlink" title="菜刀"></a>菜刀</h1><blockquote><p>使用菜刀 输入地址 密码为shell<br><img src="https://i.loli.net/2021/08/02/5MsYGIQj1pzAgnR.png" alt="SLQ9HNSZDASFOJI@PE2YL32.png"><br>成功查看目录结构及其内容<br>打开flag文件 成功得到<br><img src="https://i.loli.net/2021/08/02/FTr3alevy8ogBRM.png" alt="73@B_XH444RU5MX_OBK_FI.png"></p></blockquote>]]></content>
     
-    
-    <categories>
-      
-      <category>攻防世界</category>
-      
-    </categories>
     
     
     <tags>
@@ -304,18 +561,31 @@
   
   
   <entry>
+    <title>Second blog</title>
+    <link href="/2021/07/06/Second/"/>
+    <url>/2021/07/06/Second/</url>
+    
+    <content type="html"><![CDATA[<h1 id="有点晚了"><a href="#有点晚了" class="headerlink" title="有点晚了"></a>有点晚了</h1><h2 id="emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-就来想试试"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-就来想试试" class="headerlink" title="&emsp;  &emsp;  &emsp;&emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; 就来想试试"></a>&emsp;  &emsp;  &emsp;&emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; 就来想试试</h2><h2 id="emsp-emsp-emsp-emsp-emsp-居然折磨晚了"><a href="#emsp-emsp-emsp-emsp-emsp-居然折磨晚了" class="headerlink" title="&emsp;  &emsp; &emsp; &emsp; &emsp; 居然折磨晚了"></a>&emsp;  &emsp; &emsp; &emsp; &emsp; 居然折磨晚了</h2><h1 id="emsp-emsp-emsp-哈哈哈"><a href="#emsp-emsp-emsp-哈哈哈" class="headerlink" title="&emsp; &emsp; &emsp; 哈哈哈"></a>&emsp; &emsp; &emsp; 哈哈哈</h1><h1 id="emsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-有点晕了"><a href="#emsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-有点晕了" class="headerlink" title="&emsp;  &nbsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  有点晕了"></a>&emsp;  &nbsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  有点晕了</h1><h1 id="nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-看点不早了"><a href="#nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-看点不早了" class="headerlink" title="&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 看点不早了"></a>&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 看点不早了</h1><h2 id="nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-该睡了"><a href="#nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-该睡了" class="headerlink" title="&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  该睡了"></a>&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  该睡了</h2><h1 id="emsp-emsp-emsp-emsp-emsp-晚安-玛卡巴卡"><a href="#emsp-emsp-emsp-emsp-emsp-晚安-玛卡巴卡" class="headerlink" title="&emsp; &emsp; &emsp; &emsp;&emsp;  晚安 玛卡巴卡"></a>&emsp; &emsp; &emsp; &emsp;&emsp;  晚安 玛卡巴卡</h1>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>HELLO</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>web信息泄露（php）</title>
     <link href="/2021/07/06/php/"/>
     <url>/2021/07/06/php/</url>
     
-    <content type="html"><![CDATA[<h1 id="emsp-emsp-emsp-emsp-emsp-emsp-php"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-php" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; php"></a>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; php</h1><blockquote><p> 开启环境后，点击进入，查看图片，仔细搜索发现flag。</p></blockquote><p><img src="https://i.loli.net/2021/07/16/SYQ3nfVOuMzEx9i.png" alt="┗( ▔, ▔ )┛"></p><blockquote><blockquote><p> 按f12 查看网页源码 ，搜索发现flag。</p></blockquote></blockquote>]]></content>
+    <content type="html"><![CDATA[<h1 id="emsp-emsp-emsp-emsp-emsp-emsp-php"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-php" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; php"></a>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; php</h1><blockquote><p> 开启环境后，点击进入，查看图片，仔细搜索发现flag。</p></blockquote><p><img src="https://i.loli.net/2021/07/16/SYQ3nfVOuMzEx9i.png" alt="image-20210303132454472.png"></p><blockquote><blockquote><p> 按f12 查看网页源码 ，搜索发现flag。</p></blockquote></blockquote>]]></content>
     
-    
-    <categories>
-      
-      <category>CTFHUB</category>
-      
-    </categories>
     
     
     <tags>
@@ -333,14 +603,8 @@
     <link href="/2021/07/06/%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86/"/>
     <url>/2021/07/06/%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86/</url>
     
-    <content type="html"><![CDATA[<h1 id="emsp-emsp-emsp-emsp-emsp-emsp-emsp-目录遍历"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-emsp-目录遍历" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  目录遍历"></a>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  目录遍历</h1><p>路径遍历攻击（也称为目录遍历）旨在访问存储在Web根文件夹之外的文件和目录。通过操纵带有“点-斜线（…）”序列及其变化的文件或使用绝对文件路径来引用文件的变量，可以访问存储在文件系统上的任意文件和目录，包括应用程序源代码、配置和关键系统文件。需要注意的是，系统操作访问控制（如在微软Windows操作系统上锁定或使用文件）限制了对文件的访问权限。这种攻击也称为“点-点斜线”、“目录遍历”、“目录爬升”和“回溯”。</p><h1 id="emsp-emsp-emsp-emsp-emsp-emsp-emsp-手动操作"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-emsp-手动操作" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  手动操作"></a>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  手动操作</h1><p><img src="https://i.loli.net/2021/07/16/3fpOMCl6DgxnHWX.png" alt="┗( ▔, ▔ )┛"></p><blockquote><p>打开环境网址，查看每个文件夹，在flag.txt中发现flag.</p></blockquote><p><img src="https://i.loli.net/2021/07/16/UgCHAu5rVh3cz1k.png" alt="┗( ▔, ▔ )┛">                                                                        </p>]]></content>
+    <content type="html"><![CDATA[<h1 id="emsp-emsp-emsp-emsp-emsp-emsp-emsp-目录遍历"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-emsp-目录遍历" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  目录遍历"></a>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  目录遍历</h1><p>路径遍历攻击（也称为目录遍历）旨在访问存储在Web根文件夹之外的文件和目录。通过操纵带有“点-斜线（…）”序列及其变化的文件或使用绝对文件路径来引用文件的变量，可以访问存储在文件系统上的任意文件和目录，包括应用程序源代码、配置和关键系统文件。需要注意的是，系统操作访问控制（如在微软Windows操作系统上锁定或使用文件）限制了对文件的访问权限。这种攻击也称为“点-点斜线”、“目录遍历”、“目录爬升”和“回溯”。</p><h1 id="emsp-emsp-emsp-emsp-emsp-emsp-emsp-手动操作"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-emsp-手动操作" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  手动操作"></a>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  手动操作</h1><p><img src="https://i.loli.net/2021/07/16/3fpOMCl6DgxnHWX.png" alt="image-20210207000954390.png"></p><blockquote><p>打开环境网址，查看每个文件夹，在flag.txt中发现flag.</p></blockquote><p><img src="https://i.loli.net/2021/07/16/UgCHAu5rVh3cz1k.png" alt="2018541-20200426155422453-671710133.png">                                                                        </p>]]></content>
     
-    
-    <categories>
-      
-      <category>CTFHUB</category>
-      
-    </categories>
     
     
     <tags>
@@ -354,30 +618,11 @@
   
   
   <entry>
-    <title>Second blog</title>
-    <link href="/2021/07/05/Second/"/>
-    <url>/2021/07/05/Second/</url>
-    
-    <content type="html"><![CDATA[<h1 id="有点晚了"><a href="#有点晚了" class="headerlink" title="有点晚了"></a>有点晚了</h1><h2 id="emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-就来想试试"><a href="#emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-就来想试试" class="headerlink" title="&emsp;  &emsp;  &emsp;&emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; 就来想试试"></a>&emsp;  &emsp;  &emsp;&emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; 就来想试试</h2><h2 id="emsp-emsp-emsp-emsp-emsp-居然折磨晚了"><a href="#emsp-emsp-emsp-emsp-emsp-居然折磨晚了" class="headerlink" title="&emsp;  &emsp; &emsp; &emsp; &emsp; 居然折磨晚了"></a>&emsp;  &emsp; &emsp; &emsp; &emsp; 居然折磨晚了</h2><h1 id="emsp-emsp-emsp-哈哈哈"><a href="#emsp-emsp-emsp-哈哈哈" class="headerlink" title="&emsp; &emsp; &emsp; 哈哈哈"></a>&emsp; &emsp; &emsp; 哈哈哈</h1><h1 id="emsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-有点晕了"><a href="#emsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-有点晕了" class="headerlink" title="&emsp;  &nbsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  有点晕了"></a>&emsp;  &nbsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  有点晕了</h1><h1 id="nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-看点不早了"><a href="#nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-emsp-看点不早了" class="headerlink" title="&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 看点不早了"></a>&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 看点不早了</h1><h2 id="nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-该睡了"><a href="#nbsp-nbsp-emsp-emsp-emsp-emsp-emsp-emsp-该睡了" class="headerlink" title="&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  该睡了"></a>&nbsp;&nbsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  该睡了</h2><h1 id="emsp-emsp-emsp-emsp-emsp-晚安-玛卡巴卡"><a href="#emsp-emsp-emsp-emsp-emsp-晚安-玛卡巴卡" class="headerlink" title="&emsp; &emsp; &emsp; &emsp;&emsp;  晚安 玛卡巴卡"></a>&emsp; &emsp; &emsp; &emsp;&emsp;  晚安 玛卡巴卡</h1>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>HELLO</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>First blog</title>
     <link href="/2021/07/05/First/"/>
     <url>/2021/07/05/First/</url>
     
-    <content type="html"><![CDATA[<h1 id="emsp-emsp-emsp-emsp-emsp-初识"><a href="#emsp-emsp-emsp-emsp-emsp-初识" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp;  初识"></a>&emsp; &emsp; &emsp; &emsp; &emsp;  初识</h1><p> 刚开始了解hexo+github搭建个人博客，于是从网上搜索视频，按着视频教程一步一步开始下载nodejs、git等环境配置文件，hexo配置一直无法安装完成。多方向搜索了解之后，认为镜像问题，更换了淘宝镜像，还是无法安装插件。多次删除nodejs、git等从新开始尝试，从零做起，按着视频教程操作，最后还是hexo安装失败。放停了几天之后，重新开始操作，终于发现是由于电脑权限问题导致hexo无法安装成功。授予管理员权限之后，开始了博客创作。</p><h1 id="emsp-emsp-emsp-emsp-emsp-上传github"><a href="#emsp-emsp-emsp-emsp-emsp-上传github" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; 上传github"></a>&emsp; &emsp; &emsp; &emsp; &emsp; 上传github</h1><p> 本地搭建完成，生成hello word页面，本地浏览正常。开始上传github，多次尝试操作之后，终于在github库中显示了源码文件。我也心生欢喜，但是输入网站，无法打开博客页面。新的问题又接踵而至，我不断删除、重传、尝试….一次又一次的失败让我心中充满了失落，甚至打起了退堂鼓。我静下来重新搜索解决问题的线索，终于解决了问题。输入个人网址之后，显示出hello word初始界面。这无疑为我增添了动力，我干劲十足准备更新一下blog。</p><p><img src="https://i.loli.net/2021/08/04/qD4vyK5aM3RgW7C.jpg" alt="┗( ▔, ▔ )┛"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="emsp-emsp-emsp-emsp-emsp-初识"><a href="#emsp-emsp-emsp-emsp-emsp-初识" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp;  初识"></a>&emsp; &emsp; &emsp; &emsp; &emsp;  初识</h1><p> 刚开始了解hexo+github搭建个人博客，于是从网上搜索视频，按着视频教程一步一步开始下载nodejs、git等环境配置文件，hexo配置一直无法安装完成。多方向搜索了解之后，认为镜像问题，更换了淘宝镜像，还是无法安装插件。多次删除nodejs、git等从新开始尝试，从零做起，按着视频教程操作，最后还是hexo安装失败。放停了几天之后，重新开始操作，终于发现是由于电脑权限问题导致hexo无法安装成功。授予管理员权限之后，开始了博客创作。</p><h1 id="emsp-emsp-emsp-emsp-emsp-上传github"><a href="#emsp-emsp-emsp-emsp-emsp-上传github" class="headerlink" title="&emsp; &emsp; &emsp; &emsp; &emsp; 上传github"></a>&emsp; &emsp; &emsp; &emsp; &emsp; 上传github</h1><p> 本地搭建完成，生成hello word页面，本地浏览正常。开始上传github，多次尝试操作之后，终于在github库中显示了源码文件。我也心生欢喜，但是输入网站，无法打开博客页面。新的问题又接踵而至，我不断删除、重传、尝试….一次又一次的失败让我心中充满了失落，甚至打起了退堂鼓。我静下来重新搜索解决问题的线索，终于解决了问题。输入个人网址之后，显示出hello word初始界面。这无疑为我增添了动力，我干劲十足准备更新一下blog。</p>]]></content>
     
     
     
