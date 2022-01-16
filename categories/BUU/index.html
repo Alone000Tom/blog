@@ -18,25 +18,9 @@
   <meta name="author" content="Alone">
   <meta name="keywords" content="">
   
-  <title>文件上传-双写绕过 - Alone 的博客</title>
+  <title>Kategorie - BUU - Alone 的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
 
 
 
@@ -64,7 +48,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -158,64 +142,14 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/wendang2.png') no-repeat center center;
+         style="background: url('/img/wendang.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="文件上传-双写绕过">
+            <span class="h2" id="subtitle" title="Kategorie - BUU">
               
             </span>
-
-            
-              <div class="mt-3">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-author" aria-hidden="true"></i>
-      Alone
-    </span>
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-08 20:01" pubdate>
-        September 8, 2021 pm
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      132 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      1
-       分钟
-    </span>
-  
-
-  
-  
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
-      </span>
-    
-  
-</div>
 
             
           </div>
@@ -228,141 +162,46 @@
 
   <main>
     
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">Insgesamt 2 Artikel.</p>
+  <hr>
+  
+  
+    
       
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">文件上传-双写绕过</h1>
-            
-            <div class="markdown-body">
-              <h1 id="打开题目"><a href="#打开题目" class="headerlink" title="打开题目"></a>打开题目</h1><blockquote>
-<p>文件上传 上传一个php一句话。</p>
-<blockquote>
-<p><img src="https://i.loli.net/2021/09/08/EDpxAwdFQTL6jKc.png" srcset="/img/loading2.gif" lazyload alt="ヽ(ー_ー)ノ"><br>发现上传之后后缀php被过滤。</p>
-</blockquote>
-</blockquote>
-<hr>
-<blockquote>
-<p>题目为双写绕过，写两次phpphp照样被过滤，写为pphphp过滤了中间一个php剩下字母拼成一个。</p>
-<blockquote>
-<p><img src="https://i.loli.net/2021/09/08/sOZGKW5pXxM6wLR.png" srcset="/img/loading2.gif" lazyload alt="ヽ(ー_ー)ノ"><br>上传成功，显示pass.php。<br><img src="https://i.loli.net/2021/09/08/qJNo8hOdmpU5gw9.png" srcset="/img/loading2.gif" lazyload alt="ヽ(ー_ー)ノ"></p>
-</blockquote>
-</blockquote>
-<h1 id="工具链接"><a href="#工具链接" class="headerlink" title="工具链接"></a>工具链接</h1><blockquote>
-<p>输入文件地址 密码链接成功。</p>
-<blockquote>
-<p><img src="https://i.loli.net/2021/09/08/Xknez84PcvtRUOr.png" srcset="/img/loading2.gif" lazyload alt="ヽ(ー_ー)ノ"><br>找到flag文件<br><img src="https://i.loli.net/2021/09/08/2fC3L7txyeWwvbH.png" srcset="/img/loading2.gif" lazyload alt="ヽ(ー_ー)ノ"><br>成功找到！！</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>考察文件上传漏洞，双写绕过，重复写后缀名，自动过滤一个还剩下一个保证文件格式完整。</p>
-</blockquote>
-
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/CTFHUB/">CTFHUB</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/CTF/">CTF</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均为原创，采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/09/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A00x00/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">文件上传-%00绕过</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/09/08/%E5%A2%A8%E8%80%85%20X-Forwarded-For%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%AE%9E%E6%88%98/">
-                        <span class="hidden-mobile">X-Forwarded-For注入漏洞实战</span>
-                        <span class="visible-mobile">Nächster</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                <!-- 来必力City版安装代码 -->
-<div id="lv-container" data-id="city" data-uid="MTAyMC81MzY3My8zMDE0Ng==">
-<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-</script>
-<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+      <p class="h5">2021</p>
+    
+    <a href="/2021/12/03/%5B%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98%202019%5DHavefun/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">极客大挑战 2019Havefun</span>
+      <time style="float: right;">12-03</time>
+    </a>
+  
+    
+    <a href="/2021/12/03/%5BHCTF%202018%5DWarmUp/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">HCTF 2018WarmUp</span>
+      <time style="float: right;">12-03</time>
+    </a>
+  
 </div>
-<!-- City版安装代码已完成 -->
-              </article>
-            
-          </article>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -490,15 +329,9 @@ setInterval("createtime()",250);
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
